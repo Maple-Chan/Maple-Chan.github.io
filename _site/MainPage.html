@@ -3,23 +3,23 @@
         <!-- This is a new page -->
         <!-- Title ：Main page 主要放，主页背景、Welcome链接、CV链接-->
         <!-- Content： 主要放Recent Post, 需要能够动态的更新该模块的内容-->
-        <link rel="stylesheet" href="https://maplestory.work/assets/css/mainpage.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/mainpage.css" type="text/css">
         <!--<script type="text/javascript" src="mainpageJS.js"></script>-->
     </head>
 
     <body>
-        <header class="main-page-bg" style="background-image: url(https://maplestory.work/images/unsplash-image-1.jpg)">
+        <header class="main-page-bg" style="background-image: url(images/unsplash-image-1.jpg)">
             <h1 class="main-page-title">
-                <a class="main-page-title-link" href="https://maplestory.work" title="Maple Chan">Maple Chan</a>
+                <a class="main-page-title-link" href="/" title="Maple Chan">Maple Chan</a>
             </h1>
             <h3 class="main-page-description">
                 Looking forward to a life of fulfillment
             </h3>
 
             <div class="nav">
-                <a class="page-link" href="https://maplestory.work/page/MainPage.html">Home &nbsp;</a>
-                <a class="page-link" href="https://maplestory.work/page/CurriculumVitae.html"> CV &nbsp;</a>
-                <a class="page-link" href="https://maplestory.work/tags#"> Tags</a>
+                <a class="page-link" href="/MainPage.html">Home &nbsp;</a>
+                <a class="page-link" href="/page/CurriculumVitae.html"> CV &nbsp;</a>
+                <a class="page-link" href="/tags#"> Tags</a>
             </div>
 
         </header>
@@ -31,25 +31,6 @@
 
         </div>
 
-	<div> Recent Articles</div>
-<!-- <div> Recent Post</div>
-{% for post in site.posts %}
-  <h5><a href="{{ post.url }}.html">{{ post.title }}</a></h5>
-  {% endfor %}-->
- 
-	<section>
-          <h4>Recent Posts</h4>
-	  <ul id="recent_posts">
-		  
-          {% for rpost in site.posts limit: 15 %}
-            <li class="post">
-		    <a href="/page/mylover.html">{% site.time %}</a>
-            </li>
-	  {% endfor %}
-
-
-          </ul>
-        </section>
 
 
         <footer>

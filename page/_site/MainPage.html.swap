@@ -32,25 +32,11 @@
         </div>
 
 	<div> Recent Articles</div>
-<!-- <div> Recent Post</div>
-{% for post in site.posts %}
-  <h5><a href="{{ post.url }}.html">{{ post.title }}</a></h5>
-  {% endfor %}-->
- 
-	<section>
-          <h4>Recent Posts</h4>
-	  <ul id="recent_posts">
-		  
-          {% for rpost in site.posts limit: 15 %}
-            <li class="post">
-		    <a href="/page/mylover.html">{% site.time %}</a>
-            </li>
-	  {% endfor %}
-
-
-          </ul>
-        </section>
-
+	<ul class="post-list">
+            {% for post in site.posts limit:5 %}
+      	    <a class="post-link" href="{{ post.url | prepend: }}" target="_blank">{{ post.title }}</a>
+    	    {% endfor %}
+	</ul>
 
         <footer>
             <p class="copyright">

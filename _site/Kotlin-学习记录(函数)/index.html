@@ -1,0 +1,108 @@
+<!DOCTYPE html> <html> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> <title>Kotlin 学习记录（函数） &#8211; Maple Story</title> <meta name="description" content="浙大成功软件实习、学习"> <meta name="keywords" content="Kotlin"> <!-- Twitter Cards --> <meta name="twitter:card" content="summary"> <meta name="twitter:image" content="halve.png"> <meta name="twitter:title" content="Kotlin 学习记录（函数）"> <meta name="twitter:description" content="浙大成功软件实习、学习"> <!-- Open Graph --> <meta property="og:locale" content="en_US"> <meta property="og:type" content="article"> <meta property="og:title" content="Kotlin 学习记录（函数）"> <meta property="og:description" content="浙大成功软件实习、学习"> <meta property="og:url" content="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%87%BD%E6%95%B0)/"> <meta property="og:site_name" content="Maple Story"> <meta property="og:image" content="https://www.maplestory.work/images/halve.png"> <link rel="canonical" href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%87%BD%E6%95%B0)/"> <!-- Handheld --> <meta name="HandheldFriendly" content="True"> <meta name="MobileOptimized" content="320"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Feed --> <link type="application/atom+xml" rel="alternate" href="https://www.maplestory.work/feed.xml" title="" /> <!-- Favicons --> <link rel="shortcut icon" type="image/png" href="https://www.maplestory.work/favicon.png" /> <link rel="shortcut icon" href="https://www.maplestory.work/favicon.ico" /> <!-- CSS --> <link rel="stylesheet" type="text/css" href="https://www.maplestory.work/assets/css/main.css"> <!-- Left Block Image for Posts --> <style type="text/css"> #posts.inner-post-page .block-left {background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://www.maplestory.work/images/unsplash-gallery-image-3.jpg) no-repeat;background-size: cover;} </style> <!-- Left Block Images for Home and Pages --> <style type="text/css"> #posts .block-left {background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://www.maplestory.work/images/unsplash-image-10.jpg) no-repeat;background-size: cover, cover;} .block-left {background: linear-gradient(rgba(44,45,51,0.9), rgba(44,45,51,0.9)), url(https://www.maplestory.work/images/home.jpg) no-repeat;background-size: cover;} </style> </head> <body id="posts" class="inner-post-page"> <div class="block-left"> <div class="content"> <a href="https://www.maplestory.work" class="logo"><img src="https://www.maplestory.work/images/halve.png"></a> <div class="post-title-section"> <div class="section-line">Posts <em>/</em></div> <h1 class="section-title">Kotlin 学习记录（函数） </h1> <ul class="tags"> <li><a href="https://www.maplestory.work/tags#Kotlin">Kotlin</a></li> </ul> <div class="section-line reverse"><a href="https://www.maplestory.work/posts">Back to posts</a> <em>/</em></div> </div> </div> </div> <div class="block-right"> <a href="../posts.html" title="posts" class="posts-menu-icon"></a> <a title="projects" class="projects-menu-icon"> <span></span> </a> <div class="inner-post content"> <div class="date-highlight">15 Jul 2019</div> <center><h2><b> Kotlin 学习记录 </b></h2></center> <p><br /></p> <div class="highlighter-rouge"><pre class="highlight"><code>本文只记录重要的或者与C/C++、Java 出入较大的内容
+</code></pre></div> <h2 id="kotlin-">Kotlin 函数</h2> <ol> <li> <p>默认参数</p><pre><code class="language-kotlin">fun defArgs(numA : Int  = 1, numB : Float = 2f, numC : Boolean = false){
+    println("numA  =  $numA \t numB = $numB \t numC = $numC")
+}
+   
+fun main(args: Array&lt;String&gt;) {
+       
+    // 默认参数的函数使用
+    defArgs()
+    defArgs(1,10f,true)
+}
+</code></pre></li> <li> <p>命名参数</p><pre><code class="language-kotlin">callFun("str",isTrue = true,numA = 3) //java中不支持这么写
+</code></pre></li> <li> <p>可变参数</p> <p>​ 当一个函数中的参数是不定数量的个数并且是同一个类型，则可是使用<code class="highlighter-rouge">vararg</code>修饰符去修饰这个变量，则被<code class="highlighter-rouge">vararg</code>修饰的参数相当于一个固定类型的数组。</p><pre><code class="language-kotlin">fun varargFun(numA: Int, vararg str : String){
+        // 遍历
+    for (s in str) {
+           
+    }
+   
+// 获取元素
+//    str[index]
+//    str.component1() ... str.component5()
+   
+// 或者其高阶函数用法
+//    str.map {  }
+//    str.filter {  }
+//    str.sortBy {  }
+   
+}
+   
+/*
+普通传递 : varargFun(1,"aaa","bbb","ccc","ddd","fff")
+数组传递：
+        val strArray = arrayOf("aaa","bbb","ccc","ddd","fff")
+        varargFun(1,*strArray) // *叫做伸展操作符
+ */
+</code></pre></li> <li> <p>单表达式函数</p> <p>​ 函数具备返回值的时候，可以省略花括号并且在<code class="highlighter-rouge">=</code>赋值符号之后指定代码体，而函数的返回值是有编辑器自动推断的</p><pre><code class="language-kotlin">// 无参数的情况
+fun test1() = 2                     // 自动推断为：返回类型为Int
+   
+// 有参数的情况
+fun test2(num : Int) = num * 2      // 自动推断为：返回类型为Int
+   
+// 或者
+fun test3(x : Float, y : Int = 2) = x * y  // 和默认参数一起使用，返回值为Float型
+</code></pre></li> </ol> <h2 id="section">高阶函数</h2> <h3 id="section-1">将函数作为参数或者返回值的函数称为高阶函数。</h3> <ol> <li><pre><code class="language-kotlin">///函数作为参数
+private fun resultByOpt(num1 : Int , num2 : Int , result : (Int ,Int) -&gt; Int) : Int{
+    return result(num1,num2)
+}
+   
+private fun testDemo() {
+    val result1 = resultByOpt(1,2){
+        num1, num2 -&gt;  num1 + num2
+    }
+   
+    val result2 = resultByOpt(3,4){
+        num1, num2 -&gt;  num1 - num2
+    }
+   
+    val result3 = resultByOpt(5,6){
+        num1, num2 -&gt;  num1 * num2
+    }
+   
+    val result4 = resultByOpt(6,3){
+        num1, num2 -&gt;  num1 / num2
+    }
+   
+    println("result1 = $result1")
+    println("result2 = $result2")
+    println("result3 = $result3")
+    println("result4 = $result4")
+}
+</code></pre></li> <li><pre><code class="language-kotlin">///返回值为函数
+fun test5(a:Int):()-&gt;Int{
+    println("")
+    var b = 3
+    return fun():Int{
+        println("b=&gt; $b")
+        b++
+        return b + a
+    }
+}
+</code></pre></li> </ol> <h3 id="section-2">常用的标准高阶函数</h3> <ol> <li> <p>TODO函数：将会抛出异常，根据参数的内容输出异常内容</p> </li> <li> <p>run函数：两种用法</p> <p>​ 当我们需要执行一个<code class="highlighter-rouge">代码块</code>的时候就可以用到这个函数,并且这个代码块是独立的。即我可以在<code class="highlighter-rouge">run()</code>函数中写一些和项目无关的代码，因为它不会影响项目的正常运行。</p><pre><code class="language-kotlin">private fun testRun1() {
+    val str = "kotlin"
+   
+    run{
+        val str = "java"   // 和上面的变量不会冲突
+        println("str = $str")
+    }
+   
+    println("str = $str")
+}    
+</code></pre><p>​ 因为<code class="highlighter-rouge">run</code>函数执行了我传进去的<code class="highlighter-rouge">lambda</code>表达式并返回了执行的结果，所以当一个业务逻辑都需要执行同一段代码而根据不同的条件去判断得到不同结果的时候。可以用到<code class="highlighter-rouge">run</code>函数</p><pre><code class="language-kotlin">val index = 3
+val num = run {
+    when(index){
+        0 -&gt; "kotlin"
+        1 -&gt; "java"
+        2 -&gt; "php"
+        3 -&gt; "javaScript"
+        else -&gt; "none"
+    }
+}.length
+println("num = $num")
+</code></pre><p>​ 被一个对象所调用。<strong>当我们传入的lambda表达式想要使用当前对象的上下文的时候，我们可以使用这个函数。</strong></p> <div class="highlighter-rouge"><pre class="highlight"><code>val str = "kotlin"
+str.run {
+    println( "length = ${this.length}" )
+    println( "first = ${first()}")
+    println( "last = ${last()}" )
+}
+</code></pre></div> </li> <li> <p>同时还有<code class="highlighter-rouge">with</code> / <code class="highlighter-rouge">let</code> / <code class="highlighter-rouge">apply</code> / <code class="highlighter-rouge">also</code> / <code class="highlighter-rouge">takeIf()</code> / <code class="highlighter-rouge">takeUnless</code> / <code class="highlighter-rouge">repeat()</code> / <code class="highlighter-rouge">lazy()</code> 分别有不同的用法</p> </li> </ol> <br> <nav class="pagination"> <a href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(Lambda-&-%E7%A9%BA%E7%B1%BB%E5%9E%8B-%E7%A9%BA%E5%AE%89%E5%85%A8)/" class="pagination_pager" title="Kotlin 学习记录（Lambda &amp; 空类型） ">previous</a> <a href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%B8%B8%E5%8F%98%E9%87%8F)/" class="pagination_pager" title="Kotlin 学习记录（常变量、数据类型） ">next</a> </nav> </div> </div> <!-- JS --> <script src="https://www.maplestory.work/assets/js/main.min.js"></script> <div class="overlay"> <ul class="projects-menu"> <li style="background:url(https://www.maplestory.work/images/benjamin-deyoung-unsplash.jpg) center center no-repeat;"> <a href="https://github.com/Maple-Chan" target="_blank" rel="nofollow external"> <span> GitHub Home </span> </a> </li> </ul> </div> </body> </html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html> <html> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> <title>Kotlin 学习记录（类相关） &#8211; Maple Story</title> <meta name="description" content="浙大成功软件实习、学习"> <meta name="keywords" content="Kotlin"> <!-- Twitter Cards --> <meta name="twitter:card" content="summary"> <meta name="twitter:image" content="halve.png"> <meta name="twitter:title" content="Kotlin 学习记录（类相关）"> <meta name="twitter:description" content="浙大成功软件实习、学习"> <!-- Open Graph --> <meta property="og:locale" content="en_US"> <meta property="og:type" content="article"> <meta property="og:title" content="Kotlin 学习记录（类相关）"> <meta property="og:description" content="浙大成功软件实习、学习"> <meta property="og:url" content="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E7%B1%BB)/"> <meta property="og:site_name" content="Maple Story"> <meta property="og:image" content="https://www.maplestory.work/images/halve.png"> <link rel="canonical" href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E7%B1%BB)/"> <!-- Handheld --> <meta name="HandheldFriendly" content="True"> <meta name="MobileOptimized" content="320"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Feed --> <link type="application/atom+xml" rel="alternate" href="https://www.maplestory.work/feed.xml" title="" /> <!-- Favicons --> <link rel="shortcut icon" type="image/png" href="https://www.maplestory.work/favicon.png" /> <link rel="shortcut icon" href="https://www.maplestory.work/favicon.ico" /> <!-- CSS --> <link rel="stylesheet" type="text/css" href="https://www.maplestory.work/assets/css/main.css"> <!-- Left Block Image for Posts --> <style type="text/css"> #posts.inner-post-page .block-left {background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://www.maplestory.work/images/unsplash-gallery-image-3.jpg) no-repeat;background-size: cover;} </style> <!-- Left Block Images for Home and Pages --> <style type="text/css"> #posts .block-left {background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://www.maplestory.work/images/unsplash-image-10.jpg) no-repeat;background-size: cover, cover;} .block-left {background: linear-gradient(rgba(44,45,51,0.9), rgba(44,45,51,0.9)), url(https://www.maplestory.work/images/home.jpg) no-repeat;background-size: cover;} </style> </head> <body id="posts" class="inner-post-page"> <div class="block-left"> <div class="content"> <a href="https://www.maplestory.work" class="logo"><img src="https://www.maplestory.work/images/halve.png"></a> <div class="post-title-section"> <div class="section-line">Posts <em>/</em></div> <h1 class="section-title">Kotlin 学习记录（类相关） </h1> <ul class="tags"> <li><a href="https://www.maplestory.work/tags#Kotlin">Kotlin</a></li> </ul> <div class="section-line reverse"><a href="https://www.maplestory.work/posts">Back to posts</a> <em>/</em></div> </div> </div> </div> <div class="block-right"> <a href="../posts.html" title="posts" class="posts-menu-icon"></a> <a title="projects" class="projects-menu-icon"> <span></span> </a> <div class="inner-post content"> <div class="date-highlight">15 Jul 2019</div> <center><h2><b> Kotlin 学习记录 </b></h2></center> <p><br /></p> <div class="highlighter-rouge"><pre class="highlight"><code>本文只记录重要的或者与C/C++、Java 出入较大的内容
+</code></pre></div> <h2 id="class">Class</h2> <ol> <li> <p>当类没有结构体时可以省略大括号：<code class="highlighter-rouge">class Test</code></p> </li> <li> <p>主构造函数</p><pre><code class="language-kotlin">class Test constructor(num :Int){
+	//...
+}
+   
+class Test (num:Int){
+    //...
+}
+</code></pre></li> <li> <p>初始化代码块</p><pre><code class="language-kotlin">class Test constructor(var num:Int){
+    init{
+     	num = 5
+        println("num = $num")
+    }
+}
+</code></pre></li> <li> <p>如上，声明属性可以直接在类头声明</p> </li> <li> <p>当构造函数不具有注释符或者使用默认的可见性修饰符时，可以省略constructor关键字</p> </li> <li> <p>辅助构造函数</p> <div class="highlighter-rouge"><pre class="highlight"><code>class Test{
+    constructor(参数){
+    }
+}
+</code></pre></div> </li> <li> <p>同时存在主构造函数和二级构造函数</p> <p>​ 如果类具有主构造函数，则每个辅助构造函数需要通过另一个辅助构造函数直接或间接地委派给主构造函数。 使用<code class="highlighter-rouge">this</code>关键字对同一类的另一个构造函数进行委派：</p><pre><code class="language-kotlin">class Class_example2 constructor( num1:Int = 2){
+    private var num2 :Int = 30
+   
+    init {
+        println(num1)
+        num2
+    }
+   
+    constructor( num1:Int = 2, num3:Int):this(num1){
+        println("num3+num1 = $num1 + $num3")
+    }
+       
+    //虽然这里写的是num3，但其实调用的是主构造函数
+    constructor(num1: Int = 2,num3: Int,num2:Int):this(num3){ 
+        println("constructor - 3 para")
+    }
+   
+}
+fun main(){
+    var c :Class_example2 = Class_example2( 3,num3 = 3)
+    var cc:Class_example2 = Class_example2(1,2,3)
+   
+}
+   
+/*
+输出：
+3
+num3+num1 = 3 + 3
+2      
+constructor - 3 para
+   
+*/
+</code></pre></li> <li> <p>当类的主构造函数都存在默认值的情况下</p> <ul> <li>在<code class="highlighter-rouge">JVM</code>上，如果类主构造函数的所有参数都具有默认值，编译器将生成一个额外的无参数构造函数，它将使用默认值。 这使得更容易使用<code class="highlighter-rouge">Kotlin</code>与诸如<code class="highlighter-rouge">Jackson</code>或<code class="highlighter-rouge">JPA</code>的库，通过无参数构造函数创建类实例。</li> <li>同理可看出，当类存在主构造函数并且有默认值时，二级构造函数也适用</li> <li>如果第一个第一个参数不是默认的，则不会有无参的，可以调用一个参数的。</li> <li>总结：如果中间有不具备默认参数的，则到该参数为止都需要进行强制给值，直到参数赋值完或者后面的都是由默认值的形参。</li> </ul> </li> <li> <p>类的实例化</p> <p>没有 <code class="highlighter-rouge">new</code> 关键字。</p> </li> <li> <p>类的类别</p> <p>密封类、内部类、抽象类、枚举类、接口类、数据类</p> </li> </ol> <h2 id="section">属性与字段</h2> <ol> <li> <p>Getter &amp; Setter</p> <ol> <li>在Kotlin中，想要外部变量不能访问某类内的变量则将Setter进行private修饰，若使用private修饰属性则该变量不能对该属性进行访问 <ol> <li>val属性不能有setter函数</li> <li>getter一般写，默认实现。写了 get()=”修改也不变”,则当前属性值永远为“修改也不变”</li> </ol> </li> </ol> </li> <li> <p>修改访问器（Getter/Setter）的可见性</p> <ol> <li>get函数前面的可见性修饰符需要和属性一直</li> <li>可以用@Inject set 来对实现<code class="highlighter-rouge">Setter</code></li> <li>共有属性var，setter用private进行修饰，则表示该属性不能外部修改值。</li> </ol> </li> <li> <p>后备字段 <a href="https://stackoverflow.com/questions/43220140/whats-kotlin-backing-field-for">(What is backing field)</a></p> <ol> <li> <p>定义：如果属性使用至少一个访问器的<strong>默认实现</strong>，或者<strong>自定义访问通过field标识符引用</strong>，则将为属性生成后备字段。 （换句话，如果没有默认访问器实现 &amp;&amp; 没有自定义通过访问field标识符进行引用，则不会有后备字段）</p> </li> <li> <p>原理：Kotlin中没有字段，但有后备字段。在isEmpty例子中可以学习到，判断类中是否为空不需要单独的字段，只需要对size进行判断即可，因此该变量不需要字段。而size则需要后备字段。</p><pre><code class="language-kotlin">class DummyClass {
+    var size = 0;
+    var isEmpty //no backing field
+        get() = size == 0
+        set(value) {
+            size = size * 2
+        }
+}
+</code></pre><div class="highlighter-rouge"><pre class="highlight"><code>   <span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">DummyClass</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">size</span><span class="o">;</span>
+      
+   <span class="kd">public</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">getSize</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">size</span><span class="o">;</span>
+   <span class="o">}</span>
+      
+   <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="n">setSize</span><span class="o">(</span><span class="kt">int</span> <span class="n">var1</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">size</span> <span class="o">=</span> <span class="n">var1</span><span class="o">;</span>
+   <span class="o">}</span>
+      
+   <span class="kd">public</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="n">isEmpty</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">size</span> <span class="o">==</span> <span class="mi">0</span><span class="o">;</span>
+   <span class="o">}</span>
+      
+   <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="n">setEmpty</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">size</span> <span class="o">*=</span> <span class="mi">2</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+      
+</code></pre></div> </li> </ol> </li> <li> <p>后备属性</p> <p>_table是private 没有法访问，定义了table属性来对 _table进行get操作。</p><pre><code class="language-kotlin">private var _table: Map&lt;String, Int&gt;? = null
+public val table: Map&lt;String, Int&gt;  /// table就是后备属性。
+    get() {
+        if (_table == null) {
+            _table = HashMap() // 初始化
+        }
+        // ?: 操作符，如果_table不为空则返回，反之则抛出AssertionError异常
+        return _table ?: throw AssertionError("Set to null by another thread")
+    }
+</code></pre></li> <li> <p>编译时常数</p> <p>编译时常数必须为顶层声明，初始化为<code class="highlighter-rouge">String</code>或者基本类型，没有自定义的getter()</p><pre><code class="language-kotlin">const val CONST_NUM = 5
+const val CONST_STR = "Kotlin"
+</code></pre></li> <li> <p>后期初始化属性</p> <p>只能用于修饰var，没有自定义的setter与getter函数，属性必须为空且类型不能为基本类型。</p> </li> <li> <p>委托属性</p> </li> </ol> <h2 id="section-1">修饰符</h2> <p>public、internal、protected、private</p> <ol> <li> <p>顶层声明</p> <ol> <li>在顶层声明中，文件不能用protected修饰</li> <li>不同文件中，访问顶层声明的可以访问，public和internal</li> </ol> </li> <li> <p>在类中声明</p> <ol> <li>类中可以使用任意修饰符，且类内可以任意访问</li> <li>类外的函数，只能访问public和internal</li> </ol> </li> <li> <p>在接口中声明</p> <ol> <li>只能声明public属性。</li> <li>修饰private类和private的方法</li> <li>用private修饰的方法不能被实现该接口的类重载。</li> </ol> </li> <li> <p>在构造函数中的声明</p> <ol> <li>任意使用修饰符</li> <li>在二级构造函数中，不能用任意修饰符，可以说是默认修饰（public）</li> </ol> </li> <li> <p>在局部声明中同上步中的二级构造函数</p> </li> <li> <p>与Java中的对比</p> <p>四个修饰符不同、默认修饰符不同</p> </li> </ol> <h2 id="section-2">继承</h2> <ol> <li> <p>超类（Any）；用：符号继承</p> </li> <li> <p>open修饰符</p> <ol> <li>open修饰符是定义继承类的修饰符</li> <li>类和成员都需要使用open关键字</li> </ol> </li> <li> <p>继承类的构造函数</p> <ol> <li> <p>实现类无主构造函数</p> <p>每个辅助构造函数必须使用<code class="highlighter-rouge">super</code>关键字初始化或者委托给另一个构造函数。</p> </li> <li> <p>存在主构造函数</p> <p>主构造函数一般实现基类中参数最多的构造函数，参数少的哦那个this引用即可。</p> </li> </ol> </li> <li> <p>函数的重写</p> <ol> <li> <p>子类不能重写基类中没有用open修饰的同名函数。</p> </li> <li> <p>当一个类不是用open修饰时，该类默认实final，不能被再次继承</p> </li> <li> <p>子类用final关键字修饰方法，以此来禁止后续子类重写该方法。</p><pre><code class="language-kotlin">open class A{
+    open fun foo(){}
+}
+      
+// B这个类继承类A，并且类B同样使用open修饰符修饰了的
+open class B : Demo(){
+         
+    // 这里使用final修饰符修饰该方法，禁止覆盖掉类A的foo()函数
+    final override fun foo(){}
+}
+</code></pre></li> </ol> </li> <li> <p>重写属性</p> <ol> <li> <p>重写属性必须用override修饰。</p> </li> <li> <p>当基类属性修饰为val时，实现类可以用var去重写，反之却不行。</p><pre><code class="language-kotlin">open class Demo{
+    open val valStr = "我是用val修饰的属性"
+}
+      
+class DemoTest : Demo(){
+      
+    /*
+     * 这里用val、或者var重写都是可以的。
+     * 不过当用val修饰的时候不能有setter()函数，编辑器直接会报红的
+     */
+          
+    // override val valStr: String
+    //   get() = super.valStr
+      
+    // override var valStr: String = ""
+    //   get() = super.valStr
+      
+    // override val valStr: String = ""
+      
+    override var valStr: String = "abc"
+        set(value){field = value}
+}
+      
+fun main(arge: Array&lt;String&gt;&gt;){
+    println(DemoTest().valStr)
+      
+    val demo = DemoTest()
+    demo.valStr = "1212121212"
+    println(demo.valStr)
+}
+      
+</code></pre></li> <li> <p>重写属性是不能用 get() = super.xxx，因为这样的话，不管你是否重新为该属性赋了新值，还是支持<code class="highlighter-rouge">setter()</code>,在使用的时候都调用的是基类中的属性值。</p><pre><code class="language-kotlin">class DemoTest : Demo(){
+      
+    /*
+     * 这里介绍重写属性是，getter()函数中使用`super`关键字的情况
+     */
+          
+    override var valStr: String = "abc"、
+        get() = super.valStr
+        set(value){field = value}
+}
+      
+fun main(arge: Array&lt;String&gt;&gt;){
+    println(DemoTest().valStr)
+      
+    val demo = DemoTest()
+    demo.valStr = "1212121212"
+    println(demo.valStr)
+}
+</code></pre><p>也不能 get() = this.valStr / get() = valStr 。会报运行错误。</p> <p>Exception：StackOverflowError</p> <p>java.lang.StackOverflowError:stacksize8MBStackOverflowError是由于当前线程的栈满了,也就是函数调用层级过多导致。堆栈溢出错误一般是递归调用。出现这种异常,大多是由于循环调用。出现的情况:大多数都是在本方法中调用本方法。也就是我们常说的递归调用,所以才导致这个错误的出现。</p> <p>应该用默认的 get() = field</p> </li> </ol> </li> <li> <p>在主构造函数重写</p><pre><code class="language-kotlin">class DemoTest2(override var num: Int, override val valStr: String) : Demo()
+   
+fun main(args: Array&lt;String&gt;){
+    val demo2 = DemoTest2(1,"构造函数中重写")
+    println("num = ${demo2.num} \t valStr = ${demo2.valStr}")
+}
+</code></pre></li> <li> <p>覆盖规则:解决两个接口方法名相同问题</p> <div class="highlighter-rouge"><pre class="highlight"><code>open class A{
+    open fun test1(){ println("基类A中的函数test1()") }
+   
+    open fun test2(){println("基类A中的函数test2()")}
+}
+   
+interface B{
+    fun test1(){ println("接口类B中的函数test1()") }
+   
+    fun test2(){println("接口类B中的函数test2()")}
+}
+   
+class C : A(),B{
+    override fun test1() {
+        super&lt;A&gt;.test1()
+        super&lt;B&gt;.test1()
+    }
+   
+    override fun test2() {
+        super&lt;A&gt;.test2()
+        super&lt;B&gt;.test2()
+    }
+}
+</code></pre></div> </li> </ol> <h2 id="section-3">接口类/枚举类</h2> <h4 id="section-4">枚举</h4> <ol> <li> <p>枚举类的初始化及使用</p> <div class="highlighter-rouge"><pre class="highlight"><code>enum class Color(var argb : String){
+    RED(""),
+    WHITE(""),
+    BLACK(""),
+    GREEN("")
+}
+</code></pre></div> <p>枚举常量，枚举类中的每个枚举常量都是对象，用逗号分隔。（如上述的RED(“”),）</p> <p>直接用<code class="highlighter-rouge">Color.RED</code>进行访问。</p> </li> <li> <p>枚举常量匿名类，必须提供一个抽象方法，且该方法定义在枚举类内部。而且必须在枚举变量的后面，有抽象函数，则最后一个枚举变量必须用<code class="highlighter-rouge">;</code>隔开。</p> </li> <li> <p>枚举常量的属性：name（常量名）和ordinal（常量位置）</p> </li> <li> <p>可以用<code class="highlighter-rouge">enumValues&lt;T&gt;()</code> 和<code class="highlighter-rouge">enumValuesOf&lt;T&gt;()</code>访问</p> <div class="highlighter-rouge"><pre class="highlight"><code>println(enumValues&lt;Color&gt;().joinToString { it.name })
+println(enumValueOf&lt;Color&gt;("RED"))
+   
+//输出
+//RED, WHITE, BLACK, GREEN
+//RED
+</code></pre></div> </li> <li> <p>用 <code class="highlighter-rouge">valueof()</code>和<code class="highlighter-rouge">values()</code>检测</p> <div class="highlighter-rouge"><pre class="highlight"><code>println(Color.valueOf("RED"))
+println(Color.values()[0])
+println(Color.values()[1])
+println(Color.values()[2])
+println(Color.values()[3])
+</code></pre></div> <p>其中，若使用<code class="highlighter-rouge">Color.valueOf("不存在的枚举常量")</code>，则会抛出<code class="highlighter-rouge">IllegalArgumentException</code> 异常，即枚举变量不存在。若使用<code class="highlighter-rouge">Color.values()[大于枚举常量位置]</code>，则会抛出下标越界异常。</p> </li> </ol> <h4 id="section-5">接口类</h4> <ol> <li>用<code class="highlighter-rouge">：</code>进行对接口的实现</li> <li>Kotlin中接口中可以写属性，作为抽象属性、作为访问器</li> <li>多接口可用<code class="highlighter-rouge">super&lt;接口名&gt;.方法名</code>来区分。</li> </ol> <h2 id="section-6">数据类和密封类</h2> <h4 id="section-7">数据类</h4> <ol> <li>关键字<code class="highlighter-rouge">data</code></li> <li>构造函数必须存在至少一个参数。</li> <li>数据类的特性： <ol> <li>数据类不能是抽象的、开放的、密封的或者内部的。</li> <li>数据类可以实现接口，同时也可以继承其他类，如密封类。</li> </ol> </li> </ol> <h4 id="section-8">密封类</h4> <ol> <li>关键字<code class="highlighter-rouge">sealed</code></li> <li>sealed class SealedExpr()</li> <li>密封类<strong>不能被实例化</strong>，他的作用是<em>表示受限的类继承结构</em></li> <li>密封类可以有多个实例。</li> <li>密封类的子类必须是在密封类的内部或必须存在于密封类的同一文件，密封类可以有效地保护代码。</li> </ol> <h2 id="section-9">抽象类&amp;内部类</h2> <h4 id="section-10">抽象类</h4> <ol> <li>抽象类有抽象成员，抽象成员都带<code class="highlighter-rouge">abstract</code>关键字</li> <li>Kotlin中的抽象类，在顶层定义时只能使用<code class="highlighter-rouge">public</code></li> <li>抽象类中可以定义内部抽象类</li> <li>只能继承一个抽象类</li> <li>抽象类，可以通过子类向上转型</li> <li>抽象类可以继承另一个类，但不建议用open修饰抽象类</li> </ol> <h4 id="section-11">嵌套类类</h4> <ol> <li> <p>定义：一个类嵌套在另一个类当中</p> </li> <li> <p><code class="highlighter-rouge">外部类.嵌套类().嵌套类方法/属性。在调用的时候嵌套类是需要实例化的</code>。</p><pre><code class="language-kotlin">class Outter{
+    class Nested{
+        fun execute(){
+            Log.d("test", "Nested -&gt; execute")
+        }
+    }
+}
+   
+// 调用
+Outter.Nested().execute()
+   
+//输出
+Nested -&gt; execute
+</code></pre></li> </ol> <h4 id="section-12">内部类</h4> <ol> <li> <p>定义：用inner class 来进行声明类</p> </li> <li> <p>内部类不能直接被实例化，需要外部的类实例化了对象，再利用该对象进行实例化内部类。</p><pre><code class="language-kotlin">class Outter{
+    val testVal = "test"
+    inner class Inner{
+        fun execute(){
+            Log.d("test", "Inner -&gt; execute : can read testVal=$testVal")
+        }
+    }
+}
+   
+// 调用
+val outter = Outter()
+outter.Inner().execute()
+   
+// 输出
+Inner -&gt; execute : can read testVal=test
+</code></pre></li> <li> <p>监听器的实现方法</p><pre><code class="language-kotlin">package edu.zju.maple.learning
+   
+class NickInnerClass{
+    lateinit private var listener:OnClickListener
+   
+    fun setOnClickListener(listener: OnClickListener){
+        this.listener = listener
+    }
+   
+    fun activeListener(){
+   
+        listener.onItemClick()
+    }
+   
+}
+   
+interface OnClickListener{
+    fun onItemClick()
+}
+   
+fun main(){
+    val nick = NickInnerClass()
+    nick.setOnClickListener(object:OnClickListener{
+        override fun onItemClick() {
+   
+            println("执行了activeListener函数，才有这句输出")
+        }
+   
+    })
+    var i=0;
+    while (i&lt;20){
+        i++
+   
+        nick.activeListener() ///唤醒方法
+        for ( temp in 1..0xFFFF){
+   
+        }
+   
+    }
+}
+</code></pre></li> </ol> <h4 id="section-13">局部类</h4> <ol> <li>局部类只能在定义该局部类的方法中使用</li> <li>定义在实例方法中的局部类可以访问外部类的所有变量和方法，但不能修改</li> <li>局部类可以定义属性、方法。</li> </ol> <br> <nav class="pagination"> <a href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%B8%B8%E5%8F%98%E9%87%8F)/" class="pagination_pager" title="Kotlin 学习记录（常变量、数据类型） ">previous</a> <a href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6)-%E5%89%AF%E6%9C%AC/" class="pagination_pager" title="Kotlin 学习记录（逻辑控制） ">next</a> </nav> </div> </div> <!-- JS --> <script src="https://www.maplestory.work/assets/js/main.min.js"></script> <div class="overlay"> <ul class="projects-menu"> <li style="background:url(https://www.maplestory.work/images/benjamin-deyoung-unsplash.jpg) center center no-repeat;"> <a href="https://github.com/Maple-Chan" target="_blank" rel="nofollow external"> <span> GitHub Home </span> </a> </li> </ul> </div> </body> </html>
