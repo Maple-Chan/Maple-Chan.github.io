@@ -13,4 +13,4 @@ Male
 Software Engineer
 
 
-### [Main Page](page/MainPage.html)
+### [Main Page](/page/MainPage.html)
