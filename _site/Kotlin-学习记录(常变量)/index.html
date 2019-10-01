@@ -1,0 +1,49 @@
+<!DOCTYPE html> <html> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> <title>Kotlin 学习记录（常变量、数据类型） &#8211; Maple Story</title> <meta name="description" content="浙大成功软件实习、学习"> <meta name="keywords" content="Kotlin"> <!-- Twitter Cards --> <meta name="twitter:card" content="summary"> <meta name="twitter:image" content="halve.png"> <meta name="twitter:title" content="Kotlin 学习记录（常变量、数据类型）"> <meta name="twitter:description" content="浙大成功软件实习、学习"> <!-- Open Graph --> <meta property="og:locale" content="en_US"> <meta property="og:type" content="article"> <meta property="og:title" content="Kotlin 学习记录（常变量、数据类型）"> <meta property="og:description" content="浙大成功软件实习、学习"> <meta property="og:url" content="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%B8%B8%E5%8F%98%E9%87%8F)/"> <meta property="og:site_name" content="Maple Story"> <meta property="og:image" content="https://www.maplestory.work/images/halve.png"> <link rel="canonical" href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%B8%B8%E5%8F%98%E9%87%8F)/"> <!-- Handheld --> <meta name="HandheldFriendly" content="True"> <meta name="MobileOptimized" content="320"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Feed --> <link type="application/atom+xml" rel="alternate" href="https://www.maplestory.work/feed.xml" title="" /> <!-- Favicons --> <link rel="shortcut icon" type="image/png" href="https://www.maplestory.work/favicon.png" /> <link rel="shortcut icon" href="https://www.maplestory.work/favicon.ico" /> <!-- CSS --> <link rel="stylesheet" type="text/css" href="https://www.maplestory.work/assets/css/main.css"> <!-- Left Block Image for Posts --> <style type="text/css"> #posts.inner-post-page .block-left {background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://www.maplestory.work/images/unsplash-gallery-image-3.jpg) no-repeat;background-size: cover;} </style> <!-- Left Block Images for Home and Pages --> <style type="text/css"> #posts .block-left {background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://www.maplestory.work/images/unsplash-image-10.jpg) no-repeat;background-size: cover, cover;} .block-left {background: linear-gradient(rgba(44,45,51,0.9), rgba(44,45,51,0.9)), url(https://www.maplestory.work/images/home.jpg) no-repeat;background-size: cover;} </style> </head> <body id="posts" class="inner-post-page"> <div class="block-left"> <div class="content"> <a href="https://www.maplestory.work" class="logo"><img src="https://www.maplestory.work/images/halve.png"></a> <div class="post-title-section"> <div class="section-line">Posts <em>/</em></div> <h1 class="section-title">Kotlin 学习记录（常变量、数据类型） </h1> <ul class="tags"> <li><a href="https://www.maplestory.work/tags#Kotlin">Kotlin</a></li> </ul> <div class="section-line reverse"><a href="https://www.maplestory.work/posts">Back to posts</a> <em>/</em></div> </div> </div> </div> <div class="block-right"> <a href="../posts.html" title="posts" class="posts-menu-icon"></a> <a title="projects" class="projects-menu-icon"> <span></span> </a> <div class="inner-post content"> <div class="date-highlight">15 Jul 2019</div> <center><h2><b> Kotlin 学习记录 </b></h2></center> <p><br /></p> <div class="highlighter-rouge"><pre class="highlight"><code>本文只记录重要的或者与C/C++、Java 出入较大的内容
+</code></pre></div> <h2 id="kotlin-">Kotlin 变、常量用法</h2> <ol> <li>在类中定义变量必须初始化，暂时不能初始化的可用<strong>lateinit</strong>[后期初始化]关键字声明</li> <li><strong>lateinit</strong>只能声明于 var 变量（不能为可空变量、不能为基本数据类型、使用变量前必须赋值）</li> <li>延后初始化。只能用于只读变量。</li> </ol><pre><code class="language-kotlin">// 声明一个延迟初始化的字符串数组变量
+private val mTitles : Array&lt;String&gt; by lazy {
+arrayOf(
+        ctx.getString(R.string.tab_title_android),
+        ctx.getString(R.string.tab_title_ios),
+        ctx.getString(R.string.tab_title_h5)
+)
+}
+
+// 声明一个延迟初始化的字符串
+private val mStr : String by lazy{
+"我是延迟初始化字符串变量"
+}
+</code></pre><ol> <li>val 不是常量，是不可修改的变量。常量为 const val 且 const 不能用于修饰var</li> <li>常量声明的三种正确方式</li> </ol><pre><code class="language-kotlin">// 1. 顶层声明
+const val NUM_A : String = "顶层声明"
+
+// 2. 在object修饰的类中
+object TestConst{
+    const val NUM_B = "object修饰的类中"
+}
+
+// 3. 伴生对象中
+class TestClass{
+    companion object {
+        const val NUM_C = "伴生对象中声明"
+    }
+}
+
+fun main(args: Array&lt;String&gt;) {
+    println("NUM_A =&gt; $NUM_A")
+    println("NUM_B =&gt; ${TestConst.NUM_B}")
+    println("NUM_C =&gt; ${TestClass.NUM_C}")
+}常量声明的三种正确方式
+</code></pre><h2 id="section">数据类型</h2> <ol> <li>Kotlin当中不支持8进制</li> </ol><pre><code class="language-kotlin">var num16 = 0x0F
+var num2 = 0b11110001
+var num10 = 123
+</code></pre><ol> <li>Kotlin中可以通过下划线作数值中的逗号</li> </ol><pre><code class="language-kotlin">var oneMillion = 1_000_000
+println("var oneMillion = 1_000_000 =&gt; var oneMillion = $oneMillion")
+</code></pre><ol> <li>数值比较：== 比较值，===比较内存中的地址</li> <li>位运算大有不同：</li> </ol><pre><code class="language-kotlin">    var operaNum = 2
+
+    var shlnum = operaNum shl(2)
+    var shrnum = operaNum shr(2)
+    var ushrnum = operaNum ushr(2)
+
+    println(" shlOperaNum =&gt; $shlnum \n" +
+            " shrOperaNum =&gt; $shrnum \n" +
+            " ushrOperaNum =&gt; $ushrnum \n " )
+</code></pre><p>​ <code class="highlighter-rouge">Kotlin</code>中对于按位操作，和Java是有很大的差别的。<code class="highlighter-rouge">Kotlin</code>中没有特殊的字符，但是只能命名为可以以中缀形式调用的函数，下列是按位操作的完整列表(仅适用于整形（<code class="highlighter-rouge">Int</code>）和长整形（<code class="highlighter-rouge">Long</code>）)：</p> <blockquote> <ul> <li><code class="highlighter-rouge">shl(bits)</code> =&gt; 有符号向左移 (类似<code class="highlighter-rouge">Java</code>的<code class="highlighter-rouge">&lt;&lt;</code>)</li> <li><code class="highlighter-rouge">shr(bits)</code> =&gt; 有符号向右移 (类似<code class="highlighter-rouge">Java</code>的<code class="highlighter-rouge">&gt;&gt;</code>)</li> <li><code class="highlighter-rouge">ushr(bits)</code> =&gt; 无符号向右移 (类似<code class="highlighter-rouge">Java</code>的<code class="highlighter-rouge">&gt;&gt;&gt;</code>)</li> <li><code class="highlighter-rouge">and(bits)</code> =&gt; 位运算符 <code class="highlighter-rouge">and</code> (同<code class="highlighter-rouge">Java</code>中的按位与)</li> <li><code class="highlighter-rouge">or(bits)</code> =&gt; 位运算符 <code class="highlighter-rouge">or</code> (同<code class="highlighter-rouge">Java</code>中的按位或)</li> <li><code class="highlighter-rouge">xor(bits)</code> =&gt; 位运算符 <code class="highlighter-rouge">xor</code> (同<code class="highlighter-rouge">Java</code>中的按位异或)</li> <li><code class="highlighter-rouge">inv()</code> =&gt; 位运算符 按位取反 (同<code class="highlighter-rouge">Java</code>中的按位取反)</li> </ul> </blockquote> <ol> <li>数组分 <code class="highlighter-rouge">arrayOf()</code>, <code class="highlighter-rouge">arrayOfNulls()</code>, <code class="highlighter-rouge">Array()</code>, <code class="highlighter-rouge">原始类型数组</code></li> </ol> <br> <nav class="pagination"> <a href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%87%BD%E6%95%B0)/" class="pagination_pager" title="Kotlin 学习记录（函数） ">previous</a> <a href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E7%B1%BB)/" class="pagination_pager" title="Kotlin 学习记录（类相关） ">next</a> </nav> </div> </div> <!-- JS --> <script src="https://www.maplestory.work/assets/js/main.min.js"></script> <div class="overlay"> <ul class="projects-menu"> <li style="background:url(https://www.maplestory.work/images/benjamin-deyoung-unsplash.jpg) center center no-repeat;"> <a href="https://github.com/Maple-Chan" target="_blank" rel="nofollow external"> <span> GitHub Home </span> </a> </li> </ul> </div> </body> </html>

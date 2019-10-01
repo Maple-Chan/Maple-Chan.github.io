@@ -1,0 +1,1609 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.1.2">Jekyll</generator><link href="https://www.maplestory.work/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.maplestory.work/" rel="alternate" type="text/html" /><updated>2019-10-01T17:36:57+08:00</updated><id>https://www.maplestory.work/</id><title>Maple Story</title><subtitle>Personal Blog, since 9102</subtitle><entry><title>Linux下安装Jekyll本地环境</title><link href="https://www.maplestory.work/Linux%E6%90%AD%E5%BB%BAJekyll/" rel="alternate" type="text/html" title="Linux下安装Jekyll本地环境 " /><published>2019-08-29T00:00:00+08:00</published><updated>2019-08-29T00:00:00+08:00</updated><id>https://www.maplestory.work/ Linux搭建Jekyll</id><content type="html" xml:base="https://www.maplestory.work/Linux%E6%90%AD%E5%BB%BAJekyll/">&lt;center&gt;&lt;h2&gt;&lt;b&gt; Linux下安装Jekyll本地环境 &lt;/b&gt;&lt;/h2&gt;&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;本篇内容操作基于Ubuntu 18.4。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;在Linux下安装Jekyll本地环境并且配置&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll&lt;/code&gt;使之能运行某个已有的Jekyll主题博客.（从GitHub上fork的Jekyll主题中需要不同的依赖，重点是调整依赖使之能让当前已有的主题配置成功，并进行本地运行)&lt;/p&gt;
+
+&lt;h2 id=&quot;ruby--gem&quot;&gt;1.安装ruby &amp;amp; gem&lt;/h2&gt;
+
+&lt;h3 id=&quot;ruby-&quot;&gt;查看是否有ruby环境， 如果输出版本则说明已安装，可跳过这一步&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;ruby-v&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;ruby&quot;&gt;安装ruby&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;apt-get  install ruby&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;通过&lt;code class=&quot;highlighter-rouge&quot;&gt;ruby -v&lt;/code&gt;查看是否安装成功&lt;/p&gt;
+
+&lt;h3 id=&quot;gembr&quot;&gt;安装gem&lt;br /&gt;&lt;/h3&gt;
+&lt;p&gt;ruby安装时会自带gem，通过&lt;code class=&quot;highlighter-rouge&quot;&gt;gem -v&lt;/code&gt; 进行查看是否存在gem&lt;/p&gt;
+
+&lt;h3 id=&quot;gem&quot;&gt;切换gem的镜像源&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;gem sources –remove https://rubygems.org/&lt;br /&gt;
+gem sources -a https://gems.ruby-chian.org/&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;通过&lt;code class=&quot;highlighter-rouge&quot;&gt;gem source&lt;/code&gt;进行查看源是否切换成功&lt;/p&gt;
+
+&lt;h3 id=&quot;bundle&quot;&gt;安装bundle&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;gem install bundle&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;jekyll&quot;&gt;安装jekyll&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;gem install jekyll&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;2.启动博客&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;jekyll new newBlog&lt;br /&gt;
+ cd newBlog&lt;br /&gt;
+ jekyll serve(bundle exec jekyll s)&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;此时就可以启动Jekyll默认模板的静态博客了，浏览器默认入口: 127.0.0.1:4000/&lt;/p&gt;
+
+&lt;h3 id=&quot;br&quot;&gt;启动已有的博客&lt;br /&gt;&lt;/h3&gt;
+
+&lt;p&gt;如果进入已有博客路径，博客启动不成功，需要通过的如下方法进行调整。不成功的问题在于，安装的bundle或者bundle下的依赖与已有博客配置的GEMFIEL、GEMFILE.lock不同（或者说与此博客项目所需要依赖的不同）。&lt;/p&gt;
+
+&lt;p&gt;通过如下命令，替换或者安装bundle中的不匹配依赖&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;bundle install dependences -v denpendencesversion&lt;br /&gt;
+bundle uninstall dependences -v denpendencesversion&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;最后尝试启动server&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;bundle exec jekyll server / jekyll server 
+&lt;br /&gt;#我切换过各种依赖后后面这种方式就启动不成功了&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;如果没有报错，那么到此搭建的jekyll blog已经能够通过浏览器访问了，默认入口为：127.0.0.1:4000/&lt;/p&gt;</content><category term="Jekyll" /><category term="Linux" /><summary>Personal Blog</summary></entry><entry><title>DNS解析学习</title><link href="https://www.maplestory.work/DNS%E8%A7%A3%E6%9E%90%E5%AD%A6%E4%B9%A0(%E5%9F%BA%E4%BA%8E%E9%98%BF%E9%87%8C%E4%BA%91%E8%A7%A3%E6%9E%90%E8%87%AA%E5%B7%B1%E5%9F%9F%E5%90%8D%E5%AE%9E%E4%BE%8B)/" rel="alternate" type="text/html" title="DNS解析学习" /><published>2019-08-22T00:00:00+08:00</published><updated>2019-08-22T00:00:00+08:00</updated><id>https://www.maplestory.work/ DNS解析学习(基于阿里云解析自己域名实例)</id><content type="html" xml:base="https://www.maplestory.work/DNS%E8%A7%A3%E6%9E%90%E5%AD%A6%E4%B9%A0(%E5%9F%BA%E4%BA%8E%E9%98%BF%E9%87%8C%E4%BA%91%E8%A7%A3%E6%9E%90%E8%87%AA%E5%B7%B1%E5%9F%9F%E5%90%8D%E5%AE%9E%E4%BE%8B)/">&lt;center&gt;&lt;h2&gt;&lt;b&gt; DNS解析 &lt;/b&gt;&lt;/h2&gt;&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;本篇内容基于自己在使用阿里云DNS解析域名，使用子域名访问不同网站（项目）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;dns&quot;&gt;DNS原理&lt;/h2&gt;
+
+&lt;h4 id=&quot;dns-1&quot;&gt;什么是DNS&lt;/h4&gt;
+
+&lt;p&gt;DNS( Domain Name System)是“域名系统”的英文缩写，是一种组织成域层次结构的计算机和网络服务命名系统，它用于TCP/IP网络，它所提供的服务是用来&lt;strong&gt;将主机名和域名转换为IP地址&lt;/strong&gt;的工作。&lt;/p&gt;
+
+&lt;h4 id=&quot;dns-2&quot;&gt;DNS的过程&lt;/h4&gt;
+
+&lt;p&gt;    DNS是应用层协议，事实上他是为其他应用层协议工作的，包括不限于HTTP和SMTP以及FTP，用于将用户提供的主机名解析为ip地址。
+具体过程如下：
+    ①用户主机上运行着DNS的客户端，就是我们的PC机或者手机客户端运行着DNS客户端了
+    ②浏览器将接收到的url中抽取出域名字段，就是访问的主机名，比如&lt;code class=&quot;highlighter-rouge&quot;&gt;http://www.baidu.com/&lt;/code&gt;, 并将这个主机名传送给DNS应用的客户端
+    ③DNS客户机端向DNS服务器端发送一份查询报文，报文中包含着要访问的主机名字段（中间包括一些列缓存查询以及分布式DNS集群的工作）
+    ④该DNS客户机最终会收到一份回答报文，其中包含有该主机名对应的IP地址
+    ⑤一旦该浏览器收到来自DNS的IP地址，就可以向该IP地址定位的HTTP服务器发起TCP连接&lt;/p&gt;
+
+&lt;p&gt;这就涉及了，在阿里云上配置DNS的过程。在解析参数中主机记录填写为&lt;code class=&quot;highlighter-rouge&quot;&gt;hexoblog.maplestory.work&lt;/code&gt;，后缀为本博客的域名，记录值填写maple-chan.github.io, 也就是github给的端口。如此一来就能通过该域名访问我在github中的项目。DNS解析将自定义的域名（&lt;code class=&quot;highlighter-rouge&quot;&gt;hexoblog.maplestory.work&lt;/code&gt;）和&lt;code class=&quot;highlighter-rouge&quot;&gt;maple-chan.github.io&lt;/code&gt;联系起来。&lt;/p&gt;
+
+&lt;p&gt;如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://maplestory.work/images/post_image/AliyunDNSConfig.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;但是怎么就能通过&lt;code class=&quot;highlighter-rouge&quot;&gt;hexoblog.maplestory.work&lt;/code&gt;定位到我对应的哪一个工程呢？（&lt;code class=&quot;highlighter-rouge&quot;&gt;maplestory.work&lt;/code&gt;解析到当前博客的工程）。这就用到了&lt;code class=&quot;highlighter-rouge&quot;&gt;CNAME&lt;/code&gt;。在git项目中添加CNAME文件，内容只写&lt;code class=&quot;highlighter-rouge&quot;&gt;hexoblog.maplestory.work&lt;/code&gt;, 这样在&lt;code class=&quot;highlighter-rouge&quot;&gt;GitPage&lt;/code&gt;中就知道你这个域名要访问的是哪一个工程了。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub&lt;/code&gt;中CNAME文件的作用：&lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub&lt;/code&gt;记录了&lt;code class=&quot;highlighter-rouge&quot;&gt;CNAME&lt;/code&gt;文件，在有请求来时查看工程中&lt;code class=&quot;highlighter-rouge&quot;&gt;CNAME&lt;/code&gt;文件下所写的域名，访问对应上得工程。&lt;/p&gt;
+
+&lt;p&gt;（这是我的理解，如我有错误，麻烦在GitHub上issue我吧！）&lt;/p&gt;</content><category term="DNS" /><summary>Personal Blog</summary></entry><entry><title>Kotlin 学习记录（逻辑控制）</title><link href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6)-%E5%89%AF%E6%9C%AC/" rel="alternate" type="text/html" title="Kotlin 学习记录（逻辑控制）" /><published>2019-07-15T00:00:00+08:00</published><updated>2019-07-15T00:00:00+08:00</updated><id>https://www.maplestory.work/ Kotlin 学习记录(逻辑控制) - 副本</id><content type="html" xml:base="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6)-%E5%89%AF%E6%9C%AC/">&lt;center&gt;&lt;h2&gt;&lt;b&gt; Kotlin 学习记录 &lt;/b&gt;&lt;/h2&gt;&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;本文只记录重要的或者与C/C++、Java 出入较大的内容
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;逻辑控制&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;IF&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;​       需要注意，Kotlin中没有三元运算符 &lt;code class=&quot;highlighter-rouge&quot;&gt;:?&lt;/code&gt;, 因为&lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt;表达式会有返回值，当条件内逻辑为代码段时，则选择最后一句的值作为返回值。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FOR&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;​       Kotlin中不再有 &lt;code class=&quot;highlighter-rouge&quot;&gt;for(int i=0;i&amp;lt;n;++i)&lt;/code&gt; 这种语法。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;关键字 until&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;for (i in 0 until 5){
+print(&quot;i =&amp;gt; $i \t&quot;) //until[0,5)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;关键词downTo&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;	for(i in 15 downTo 0){
+	print(&quot;i=&amp;gt; $i \t&quot;) //downTo[15-&amp;gt;0]
+	}
+&lt;/code&gt;&lt;/pre&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;关键符号“..”&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;print(&quot;使用 符号`..`的打印结果\n&quot;)
+for (i in 20 .. 25){
+print(&quot;i =&amp;gt; $i \t&quot;)
+}
+println() //输出结果为 	i=&amp;gt;20 i=&amp;gt;21 i=&amp;gt;22 i=&amp;gt;23 i=&amp;gt;24 i=&amp;gt;25	
+&lt;/code&gt;&lt;/pre&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;设置步长&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;for(i in 10 until 16 step 2){
+print(&quot;i =&amp;gt; $i \t&quot;)  //输出10，12，14
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;迭代&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;blockquote&gt;
+    &lt;p&gt;提供一个迭代器来遍历任何东西；数组被编译为一个基于索引的循环，&lt;strong&gt;他不会创建一个迭代器对象&lt;/strong&gt;&lt;/p&gt;
+  &lt;/blockquote&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;遍历字符串&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;for (i in &quot;abcdefg&quot;){
+	print(&quot;i =&amp;gt; $i \t&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;遍历数组&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;var arrayListOne = arrayOf(10,20,30,40,50)
+for (i in arrayListOne){
+    print(&quot;i =&amp;gt; $i \t&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;使用indices遍历数组&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;var arrayListTwo = arrayOf(1,3,5,7,9)
+for (i in arrayListTwo.indices){
+	println(&quot;arrayListTwo[$i] =&amp;gt; &quot; + arrayListTwo[i])
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;使用withIndex()遍历数组&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var arrayListTwo = arrayOf(1,3,5,7,9)
+for ((index,value) in arrayListTwo.withIndex()){
+    println(&quot;index =&amp;gt; $index \t value =&amp;gt; $value&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/div&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;使用列表或数组的扩展函数遍历&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;var arrayListThree = arrayOf(2,&#39;a&#39;,3,false,9)
+var iterator: Iterator&amp;lt;Any&amp;gt; = arrayListThree.iterator()
+while (iterator.hasNext()){
+    println(iterator.next())
+}  
+&lt;/code&gt;&lt;/pre&gt;
+
+  &lt;p&gt;//需要学习 Kotlin中的 it关键字 / Array函数本质 / lamda表达 / 函数定义&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="Kotlin" /><summary>浙大成功软件实习、学习</summary></entry><entry><title>Kotlin 学习记录（类相关）</title><link href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E7%B1%BB)/" rel="alternate" type="text/html" title="Kotlin 学习记录（类相关）" /><published>2019-07-15T00:00:00+08:00</published><updated>2019-07-15T00:00:00+08:00</updated><id>https://www.maplestory.work/ Kotlin 学习记录(类) </id><content type="html" xml:base="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E7%B1%BB)/">&lt;center&gt;&lt;h2&gt;&lt;b&gt; Kotlin 学习记录 &lt;/b&gt;&lt;/h2&gt;&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;本文只记录重要的或者与C/C++、Java 出入较大的内容
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;class&quot;&gt;Class&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;当类没有结构体时可以省略大括号：&lt;code class=&quot;highlighter-rouge&quot;&gt;class Test&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;主构造函数&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;class Test constructor(num :Int){
+	//...
+}
+   
+class Test (num:Int){
+    //...
+}
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;初始化代码块&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;class Test constructor(var num:Int){
+    init{
+     	num = 5
+        println(&quot;num = $num&quot;)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;如上，声明属性可以直接在类头声明&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;当构造函数不具有注释符或者使用默认的可见性修饰符时，可以省略constructor关键字&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;辅助构造函数&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Test{
+    constructor(参数){
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;同时存在主构造函数和二级构造函数&lt;/p&gt;
+
+    &lt;p&gt;​	如果类具有主构造函数，则每个辅助构造函数需要通过另一个辅助构造函数直接或间接地委派给主构造函数。 使用&lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt;关键字对同一类的另一个构造函数进行委派：&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;class Class_example2 constructor( num1:Int = 2){
+    private var num2 :Int = 30
+   
+    init {
+        println(num1)
+        num2
+    }
+   
+    constructor( num1:Int = 2, num3:Int):this(num1){
+        println(&quot;num3+num1 = $num1 + $num3&quot;)
+    }
+       
+    //虽然这里写的是num3，但其实调用的是主构造函数
+    constructor(num1: Int = 2,num3: Int,num2:Int):this(num3){ 
+        println(&quot;constructor - 3 para&quot;)
+    }
+   
+}
+fun main(){
+    var c :Class_example2 = Class_example2( 3,num3 = 3)
+    var cc:Class_example2 = Class_example2(1,2,3)
+   
+}
+   
+/*
+输出：
+3
+num3+num1 = 3 + 3
+2      
+constructor - 3 para
+   
+*/
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;当类的主构造函数都存在默认值的情况下&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;JVM&lt;/code&gt;上，如果类主构造函数的所有参数都具有默认值，编译器将生成一个额外的无参数构造函数，它将使用默认值。 这使得更容易使用&lt;code class=&quot;highlighter-rouge&quot;&gt;Kotlin&lt;/code&gt;与诸如&lt;code class=&quot;highlighter-rouge&quot;&gt;Jackson&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;JPA&lt;/code&gt;的库，通过无参数构造函数创建类实例。&lt;/li&gt;
+      &lt;li&gt;同理可看出，当类存在主构造函数并且有默认值时，二级构造函数也适用&lt;/li&gt;
+      &lt;li&gt;如果第一个第一个参数不是默认的，则不会有无参的，可以调用一个参数的。&lt;/li&gt;
+      &lt;li&gt;总结：如果中间有不具备默认参数的，则到该参数为止都需要进行强制给值，直到参数赋值完或者后面的都是由默认值的形参。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;类的实例化&lt;/p&gt;
+
+    &lt;p&gt;没有 &lt;code class=&quot;highlighter-rouge&quot;&gt;new&lt;/code&gt; 关键字。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;类的类别&lt;/p&gt;
+
+    &lt;p&gt;密封类、内部类、抽象类、枚举类、接口类、数据类&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;属性与字段&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Getter &amp;amp; Setter&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;在Kotlin中，想要外部变量不能访问某类内的变量则将Setter进行private修饰，若使用private修饰属性则该变量不能对该属性进行访问
+        &lt;ol&gt;
+          &lt;li&gt;val属性不能有setter函数&lt;/li&gt;
+          &lt;li&gt;getter一般写，默认实现。写了 get()=”修改也不变”,则当前属性值永远为“修改也不变”&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;修改访问器（Getter/Setter）的可见性&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;get函数前面的可见性修饰符需要和属性一直&lt;/li&gt;
+      &lt;li&gt;可以用@Inject set 来对实现&lt;code class=&quot;highlighter-rouge&quot;&gt;Setter&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;共有属性var，setter用private进行修饰，则表示该属性不能外部修改值。&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;后备字段 &lt;a href=&quot;https://stackoverflow.com/questions/43220140/whats-kotlin-backing-field-for&quot;&gt;(What is backing field)&lt;/a&gt;&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;定义：如果属性使用至少一个访问器的&lt;strong&gt;默认实现&lt;/strong&gt;，或者&lt;strong&gt;自定义访问通过field标识符引用&lt;/strong&gt;，则将为属性生成后备字段。 （换句话，如果没有默认访问器实现 &amp;amp;&amp;amp; 没有自定义通过访问field标识符进行引用，则不会有后备字段）&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;原理：Kotlin中没有字段，但有后备字段。在isEmpty例子中可以学习到，判断类中是否为空不需要单独的字段，只需要对size进行判断即可，因此该变量不需要字段。而size则需要后备字段。&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;class DummyClass {
+    var size = 0;
+    var isEmpty //no backing field
+        get() = size == 0
+        set(value) {
+            size = size * 2
+        }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DummyClass&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+      
+   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      
+   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;var1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;var1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      
+   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isEmpty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      
+   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setEmpty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      
+&lt;/code&gt;&lt;/pre&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;后备属性&lt;/p&gt;
+
+    &lt;p&gt;_table是private 没有法访问，定义了table属性来对 _table进行get操作。&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;private var _table: Map&amp;lt;String, Int&amp;gt;? = null
+public val table: Map&amp;lt;String, Int&amp;gt;  /// table就是后备属性。
+    get() {
+        if (_table == null) {
+            _table = HashMap() // 初始化
+        }
+        // ?: 操作符，如果_table不为空则返回，反之则抛出AssertionError异常
+        return _table ?: throw AssertionError(&quot;Set to null by another thread&quot;)
+    }
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;编译时常数&lt;/p&gt;
+
+    &lt;p&gt;编译时常数必须为顶层声明，初始化为&lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt;或者基本类型，没有自定义的getter()&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;const val CONST_NUM = 5
+const val CONST_STR = &quot;Kotlin&quot;
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;后期初始化属性&lt;/p&gt;
+
+    &lt;p&gt;只能用于修饰var，没有自定义的setter与getter函数，属性必须为空且类型不能为基本类型。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;委托属性&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;修饰符&lt;/h2&gt;
+
+&lt;p&gt;public、internal、protected、private&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;顶层声明&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;在顶层声明中，文件不能用protected修饰&lt;/li&gt;
+      &lt;li&gt;不同文件中，访问顶层声明的可以访问，public和internal&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在类中声明&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;类中可以使用任意修饰符，且类内可以任意访问&lt;/li&gt;
+      &lt;li&gt;类外的函数，只能访问public和internal&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在接口中声明&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;只能声明public属性。&lt;/li&gt;
+      &lt;li&gt;修饰private类和private的方法&lt;/li&gt;
+      &lt;li&gt;用private修饰的方法不能被实现该接口的类重载。&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在构造函数中的声明&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;任意使用修饰符&lt;/li&gt;
+      &lt;li&gt;在二级构造函数中，不能用任意修饰符，可以说是默认修饰（public）&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在局部声明中同上步中的二级构造函数&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;与Java中的对比&lt;/p&gt;
+
+    &lt;p&gt;四个修饰符不同、默认修饰符不同&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;继承&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;超类（Any）；用：符号继承&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;open修饰符&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;open修饰符是定义继承类的修饰符&lt;/li&gt;
+      &lt;li&gt;类和成员都需要使用open关键字&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;继承类的构造函数&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;实现类无主构造函数&lt;/p&gt;
+
+        &lt;p&gt;每个辅助构造函数必须使用&lt;code class=&quot;highlighter-rouge&quot;&gt;super&lt;/code&gt;关键字初始化或者委托给另一个构造函数。&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;存在主构造函数&lt;/p&gt;
+
+        &lt;p&gt;主构造函数一般实现基类中参数最多的构造函数，参数少的哦那个this引用即可。&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;函数的重写&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;子类不能重写基类中没有用open修饰的同名函数。&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;当一个类不是用open修饰时，该类默认实final，不能被再次继承&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;子类用final关键字修饰方法，以此来禁止后续子类重写该方法。&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;open class A{
+    open fun foo(){}
+}
+      
+// B这个类继承类A，并且类B同样使用open修饰符修饰了的
+open class B : Demo(){
+         
+    // 这里使用final修饰符修饰该方法，禁止覆盖掉类A的foo()函数
+    final override fun foo(){}
+}
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;重写属性&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;重写属性必须用override修饰。&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;当基类属性修饰为val时，实现类可以用var去重写，反之却不行。&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;open class Demo{
+    open val valStr = &quot;我是用val修饰的属性&quot;
+}
+      
+class DemoTest : Demo(){
+      
+    /*
+     * 这里用val、或者var重写都是可以的。
+     * 不过当用val修饰的时候不能有setter()函数，编辑器直接会报红的
+     */
+          
+    // override val valStr: String
+    //   get() = super.valStr
+      
+    // override var valStr: String = &quot;&quot;
+    //   get() = super.valStr
+      
+    // override val valStr: String = &quot;&quot;
+      
+    override var valStr: String = &quot;abc&quot;
+        set(value){field = value}
+}
+      
+fun main(arge: Array&amp;lt;String&amp;gt;&amp;gt;){
+    println(DemoTest().valStr)
+      
+    val demo = DemoTest()
+    demo.valStr = &quot;1212121212&quot;
+    println(demo.valStr)
+}
+      
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;重写属性是不能用 get() = super.xxx，因为这样的话，不管你是否重新为该属性赋了新值，还是支持&lt;code class=&quot;highlighter-rouge&quot;&gt;setter()&lt;/code&gt;,在使用的时候都调用的是基类中的属性值。&lt;/p&gt;
+
+        &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;class DemoTest : Demo(){
+      
+    /*
+     * 这里介绍重写属性是，getter()函数中使用`super`关键字的情况
+     */
+          
+    override var valStr: String = &quot;abc&quot;、
+        get() = super.valStr
+        set(value){field = value}
+}
+      
+fun main(arge: Array&amp;lt;String&amp;gt;&amp;gt;){
+    println(DemoTest().valStr)
+      
+    val demo = DemoTest()
+    demo.valStr = &quot;1212121212&quot;
+    println(demo.valStr)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+        &lt;p&gt;也不能 get() = this.valStr / get() = valStr 。会报运行错误。&lt;/p&gt;
+
+        &lt;p&gt;Exception：StackOverflowError&lt;/p&gt;
+
+        &lt;p&gt;java.lang.StackOverflowError:stacksize8MBStackOverflowError是由于当前线程的栈满了,也就是函数调用层级过多导致。堆栈溢出错误一般是递归调用。出现这种异常,大多是由于循环调用。出现的情况:大多数都是在本方法中调用本方法。也就是我们常说的递归调用,所以才导致这个错误的出现。&lt;/p&gt;
+
+        &lt;p&gt;应该用默认的 get() = field&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在主构造函数重写&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;class DemoTest2(override var num: Int, override val valStr: String) : Demo()
+   
+fun main(args: Array&amp;lt;String&amp;gt;){
+    val demo2 = DemoTest2(1,&quot;构造函数中重写&quot;)
+    println(&quot;num = ${demo2.num} \t valStr = ${demo2.valStr}&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;覆盖规则:解决两个接口方法名相同问题&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;open class A{
+    open fun test1(){ println(&quot;基类A中的函数test1()&quot;) }
+   
+    open fun test2(){println(&quot;基类A中的函数test2()&quot;)}
+}
+   
+interface B{
+    fun test1(){ println(&quot;接口类B中的函数test1()&quot;) }
+   
+    fun test2(){println(&quot;接口类B中的函数test2()&quot;)}
+}
+   
+class C : A(),B{
+    override fun test1() {
+        super&amp;lt;A&amp;gt;.test1()
+        super&amp;lt;B&amp;gt;.test1()
+    }
+   
+    override fun test2() {
+        super&amp;lt;A&amp;gt;.test2()
+        super&amp;lt;B&amp;gt;.test2()
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;接口类/枚举类&lt;/h2&gt;
+
+&lt;h4 id=&quot;section-4&quot;&gt;枚举&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;枚举类的初始化及使用&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;enum class Color(var argb : String){
+    RED(&quot;&quot;),
+    WHITE(&quot;&quot;),
+    BLACK(&quot;&quot;),
+    GREEN(&quot;&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;枚举常量，枚举类中的每个枚举常量都是对象，用逗号分隔。（如上述的RED(“”),）&lt;/p&gt;
+
+    &lt;p&gt;直接用&lt;code class=&quot;highlighter-rouge&quot;&gt;Color.RED&lt;/code&gt;进行访问。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;枚举常量匿名类，必须提供一个抽象方法，且该方法定义在枚举类内部。而且必须在枚举变量的后面，有抽象函数，则最后一个枚举变量必须用&lt;code class=&quot;highlighter-rouge&quot;&gt;;&lt;/code&gt;隔开。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;枚举常量的属性：name（常量名）和ordinal（常量位置）&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;可以用&lt;code class=&quot;highlighter-rouge&quot;&gt;enumValues&amp;lt;T&amp;gt;()&lt;/code&gt; 和&lt;code class=&quot;highlighter-rouge&quot;&gt;enumValuesOf&amp;lt;T&amp;gt;()&lt;/code&gt;访问&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;println(enumValues&amp;lt;Color&amp;gt;().joinToString { it.name })
+println(enumValueOf&amp;lt;Color&amp;gt;(&quot;RED&quot;))
+   
+//输出
+//RED, WHITE, BLACK, GREEN
+//RED
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;用 &lt;code class=&quot;highlighter-rouge&quot;&gt;valueof()&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;values()&lt;/code&gt;检测&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;println(Color.valueOf(&quot;RED&quot;))
+println(Color.values()[0])
+println(Color.values()[1])
+println(Color.values()[2])
+println(Color.values()[3])
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;其中，若使用&lt;code class=&quot;highlighter-rouge&quot;&gt;Color.valueOf(&quot;不存在的枚举常量&quot;)&lt;/code&gt;，则会抛出&lt;code class=&quot;highlighter-rouge&quot;&gt;IllegalArgumentException&lt;/code&gt; 异常，即枚举变量不存在。若使用&lt;code class=&quot;highlighter-rouge&quot;&gt;Color.values()[大于枚举常量位置]&lt;/code&gt;，则会抛出下标越界异常。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;section-5&quot;&gt;接口类&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;用&lt;code class=&quot;highlighter-rouge&quot;&gt;：&lt;/code&gt;进行对接口的实现&lt;/li&gt;
+  &lt;li&gt;Kotlin中接口中可以写属性，作为抽象属性、作为访问器&lt;/li&gt;
+  &lt;li&gt;多接口可用&lt;code class=&quot;highlighter-rouge&quot;&gt;super&amp;lt;接口名&amp;gt;.方法名&lt;/code&gt;来区分。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;数据类和密封类&lt;/h2&gt;
+
+&lt;h4 id=&quot;section-7&quot;&gt;数据类&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;关键字&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;构造函数必须存在至少一个参数。&lt;/li&gt;
+  &lt;li&gt;数据类的特性：
+    &lt;ol&gt;
+      &lt;li&gt;数据类不能是抽象的、开放的、密封的或者内部的。&lt;/li&gt;
+      &lt;li&gt;数据类可以实现接口，同时也可以继承其他类，如密封类。&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;section-8&quot;&gt;密封类&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;关键字&lt;code class=&quot;highlighter-rouge&quot;&gt;sealed&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;sealed class SealedExpr()&lt;/li&gt;
+  &lt;li&gt;密封类&lt;strong&gt;不能被实例化&lt;/strong&gt;，他的作用是&lt;em&gt;表示受限的类继承结构&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;密封类可以有多个实例。&lt;/li&gt;
+  &lt;li&gt;密封类的子类必须是在密封类的内部或必须存在于密封类的同一文件，密封类可以有效地保护代码。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-9&quot;&gt;抽象类&amp;amp;内部类&lt;/h2&gt;
+
+&lt;h4 id=&quot;section-10&quot;&gt;抽象类&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;抽象类有抽象成员，抽象成员都带&lt;code class=&quot;highlighter-rouge&quot;&gt;abstract&lt;/code&gt;关键字&lt;/li&gt;
+  &lt;li&gt;Kotlin中的抽象类，在顶层定义时只能使用&lt;code class=&quot;highlighter-rouge&quot;&gt;public&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;抽象类中可以定义内部抽象类&lt;/li&gt;
+  &lt;li&gt;只能继承一个抽象类&lt;/li&gt;
+  &lt;li&gt;抽象类，可以通过子类向上转型&lt;/li&gt;
+  &lt;li&gt;抽象类可以继承另一个类，但不建议用open修饰抽象类&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;section-11&quot;&gt;嵌套类类&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;定义：一个类嵌套在另一个类当中&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;外部类.嵌套类().嵌套类方法/属性。在调用的时候嵌套类是需要实例化的&lt;/code&gt;。&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;class Outter{
+    class Nested{
+        fun execute(){
+            Log.d(&quot;test&quot;, &quot;Nested -&amp;gt; execute&quot;)
+        }
+    }
+}
+   
+// 调用
+Outter.Nested().execute()
+   
+//输出
+Nested -&amp;gt; execute
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;section-12&quot;&gt;内部类&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;定义：用inner class 来进行声明类&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;内部类不能直接被实例化，需要外部的类实例化了对象，再利用该对象进行实例化内部类。&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;class Outter{
+    val testVal = &quot;test&quot;
+    inner class Inner{
+        fun execute(){
+            Log.d(&quot;test&quot;, &quot;Inner -&amp;gt; execute : can read testVal=$testVal&quot;)
+        }
+    }
+}
+   
+// 调用
+val outter = Outter()
+outter.Inner().execute()
+   
+// 输出
+Inner -&amp;gt; execute : can read testVal=test
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;监听器的实现方法&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;package edu.zju.maple.learning
+   
+class NickInnerClass{
+    lateinit private var listener:OnClickListener
+   
+    fun setOnClickListener(listener: OnClickListener){
+        this.listener = listener
+    }
+   
+    fun activeListener(){
+   
+        listener.onItemClick()
+    }
+   
+}
+   
+interface OnClickListener{
+    fun onItemClick()
+}
+   
+fun main(){
+    val nick = NickInnerClass()
+    nick.setOnClickListener(object:OnClickListener{
+        override fun onItemClick() {
+   
+            println(&quot;执行了activeListener函数，才有这句输出&quot;)
+        }
+   
+    })
+    var i=0;
+    while (i&amp;lt;20){
+        i++
+   
+        nick.activeListener() ///唤醒方法
+        for ( temp in 1..0xFFFF){
+   
+        }
+   
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;section-13&quot;&gt;局部类&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;局部类只能在定义该局部类的方法中使用&lt;/li&gt;
+  &lt;li&gt;定义在实例方法中的局部类可以访问外部类的所有变量和方法，但不能修改&lt;/li&gt;
+  &lt;li&gt;局部类可以定义属性、方法。&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Kotlin" /><summary>浙大成功软件实习、学习</summary></entry><entry><title>Kotlin 学习记录（常变量、数据类型）</title><link href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%B8%B8%E5%8F%98%E9%87%8F)/" rel="alternate" type="text/html" title="Kotlin 学习记录（常变量、数据类型）" /><published>2019-07-15T00:00:00+08:00</published><updated>2019-07-15T00:00:00+08:00</updated><id>https://www.maplestory.work/ Kotlin 学习记录(常变量)</id><content type="html" xml:base="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%B8%B8%E5%8F%98%E9%87%8F)/">&lt;center&gt;&lt;h2&gt;&lt;b&gt; Kotlin 学习记录 &lt;/b&gt;&lt;/h2&gt;&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;本文只记录重要的或者与C/C++、Java 出入较大的内容
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;kotlin-&quot;&gt;Kotlin 变、常量用法&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在类中定义变量必须初始化，暂时不能初始化的可用&lt;strong&gt;lateinit&lt;/strong&gt;[后期初始化]关键字声明&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;lateinit&lt;/strong&gt;只能声明于 var 变量（不能为可空变量、不能为基本数据类型、使用变量前必须赋值）&lt;/li&gt;
+  &lt;li&gt;延后初始化。只能用于只读变量。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;// 声明一个延迟初始化的字符串数组变量
+private val mTitles : Array&amp;lt;String&amp;gt; by lazy {
+arrayOf(
+        ctx.getString(R.string.tab_title_android),
+        ctx.getString(R.string.tab_title_ios),
+        ctx.getString(R.string.tab_title_h5)
+)
+}
+
+// 声明一个延迟初始化的字符串
+private val mStr : String by lazy{
+&quot;我是延迟初始化字符串变量&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;val 不是常量，是不可修改的变量。常量为 const val 且 const 不能用于修饰var&lt;/li&gt;
+  &lt;li&gt;常量声明的三种正确方式&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;// 1. 顶层声明
+const val NUM_A : String = &quot;顶层声明&quot;
+
+// 2. 在object修饰的类中
+object TestConst{
+    const val NUM_B = &quot;object修饰的类中&quot;
+}
+
+// 3. 伴生对象中
+class TestClass{
+    companion object {
+        const val NUM_C = &quot;伴生对象中声明&quot;
+    }
+}
+
+fun main(args: Array&amp;lt;String&amp;gt;) {
+    println(&quot;NUM_A =&amp;gt; $NUM_A&quot;)
+    println(&quot;NUM_B =&amp;gt; ${TestConst.NUM_B}&quot;)
+    println(&quot;NUM_C =&amp;gt; ${TestClass.NUM_C}&quot;)
+}常量声明的三种正确方式
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;数据类型&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Kotlin当中不支持8进制&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;var num16 = 0x0F
+var num2 = 0b11110001
+var num10 = 123
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Kotlin中可以通过下划线作数值中的逗号&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;var oneMillion = 1_000_000
+println(&quot;var oneMillion = 1_000_000 =&amp;gt; var oneMillion = $oneMillion&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;数值比较：== 比较值，===比较内存中的地址&lt;/li&gt;
+  &lt;li&gt;位运算大有不同：&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;    var operaNum = 2
+
+    var shlnum = operaNum shl(2)
+    var shrnum = operaNum shr(2)
+    var ushrnum = operaNum ushr(2)
+
+    println(&quot; shlOperaNum =&amp;gt; $shlnum \n&quot; +
+            &quot; shrOperaNum =&amp;gt; $shrnum \n&quot; +
+            &quot; ushrOperaNum =&amp;gt; $ushrnum \n &quot; )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;​	&lt;code class=&quot;highlighter-rouge&quot;&gt;Kotlin&lt;/code&gt;中对于按位操作，和Java是有很大的差别的。&lt;code class=&quot;highlighter-rouge&quot;&gt;Kotlin&lt;/code&gt;中没有特殊的字符，但是只能命名为可以以中缀形式调用的函数，下列是按位操作的完整列表(仅适用于整形（&lt;code class=&quot;highlighter-rouge&quot;&gt;Int&lt;/code&gt;）和长整形（&lt;code class=&quot;highlighter-rouge&quot;&gt;Long&lt;/code&gt;）)：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;shl(bits)&lt;/code&gt; =&amp;gt; 有符号向左移 (类似&lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt;)&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;shr(bits)&lt;/code&gt; =&amp;gt; 有符号向右移 (类似&lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&lt;/code&gt;)&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ushr(bits)&lt;/code&gt; =&amp;gt; 无符号向右移 (类似&lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;)&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;and(bits)&lt;/code&gt; =&amp;gt; 位运算符 &lt;code class=&quot;highlighter-rouge&quot;&gt;and&lt;/code&gt; (同&lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;中的按位与)&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;or(bits)&lt;/code&gt; =&amp;gt; 位运算符 &lt;code class=&quot;highlighter-rouge&quot;&gt;or&lt;/code&gt; (同&lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;中的按位或)&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;xor(bits)&lt;/code&gt; =&amp;gt; 位运算符 &lt;code class=&quot;highlighter-rouge&quot;&gt;xor&lt;/code&gt; (同&lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;中的按位异或)&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;inv()&lt;/code&gt; =&amp;gt; 位运算符 按位取反 (同&lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;中的按位取反)&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;数组分 &lt;code class=&quot;highlighter-rouge&quot;&gt;arrayOf()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;arrayOfNulls()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Array()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;原始类型数组&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Kotlin" /><summary>浙大成功软件实习、学习</summary></entry><entry><title>Kotlin 学习记录（函数）</title><link href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%87%BD%E6%95%B0)/" rel="alternate" type="text/html" title="Kotlin 学习记录（函数）" /><published>2019-07-15T00:00:00+08:00</published><updated>2019-07-15T00:00:00+08:00</updated><id>https://www.maplestory.work/ Kotlin 学习记录(函数) </id><content type="html" xml:base="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%87%BD%E6%95%B0)/">&lt;center&gt;&lt;h2&gt;&lt;b&gt; Kotlin 学习记录 &lt;/b&gt;&lt;/h2&gt;&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;本文只记录重要的或者与C/C++、Java 出入较大的内容
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;kotlin-&quot;&gt;Kotlin 函数&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;默认参数&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;fun defArgs(numA : Int  = 1, numB : Float = 2f, numC : Boolean = false){
+    println(&quot;numA  =  $numA \t numB = $numB \t numC = $numC&quot;)
+}
+   
+fun main(args: Array&amp;lt;String&amp;gt;) {
+       
+    // 默认参数的函数使用
+    defArgs()
+    defArgs(1,10f,true)
+}
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;命名参数&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;callFun(&quot;str&quot;,isTrue = true,numA = 3) //java中不支持这么写
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;可变参数&lt;/p&gt;
+
+    &lt;p&gt;​	当一个函数中的参数是不定数量的个数并且是同一个类型，则可是使用&lt;code class=&quot;highlighter-rouge&quot;&gt;vararg&lt;/code&gt;修饰符去修饰这个变量，则被&lt;code class=&quot;highlighter-rouge&quot;&gt;vararg&lt;/code&gt;修饰的参数相当于一个固定类型的数组。&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;fun varargFun(numA: Int, vararg str : String){
+        // 遍历
+    for (s in str) {
+           
+    }
+   
+// 获取元素
+//    str[index]
+//    str.component1() ... str.component5()
+   
+// 或者其高阶函数用法
+//    str.map {  }
+//    str.filter {  }
+//    str.sortBy {  }
+   
+}
+   
+/*
+普通传递 : varargFun(1,&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;,&quot;fff&quot;)
+数组传递：
+        val strArray = arrayOf(&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;,&quot;fff&quot;)
+        varargFun(1,*strArray) // *叫做伸展操作符
+ */
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;单表达式函数&lt;/p&gt;
+
+    &lt;p&gt;​	函数具备返回值的时候，可以省略花括号并且在&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;赋值符号之后指定代码体，而函数的返回值是有编辑器自动推断的&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;// 无参数的情况
+fun test1() = 2                     // 自动推断为：返回类型为Int
+   
+// 有参数的情况
+fun test2(num : Int) = num * 2      // 自动推断为：返回类型为Int
+   
+// 或者
+fun test3(x : Float, y : Int = 2) = x * y  // 和默认参数一起使用，返回值为Float型
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;高阶函数&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;将函数作为参数或者返回值的函数称为高阶函数。&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;///函数作为参数
+private fun resultByOpt(num1 : Int , num2 : Int , result : (Int ,Int) -&amp;gt; Int) : Int{
+    return result(num1,num2)
+}
+   
+private fun testDemo() {
+    val result1 = resultByOpt(1,2){
+        num1, num2 -&amp;gt;  num1 + num2
+    }
+   
+    val result2 = resultByOpt(3,4){
+        num1, num2 -&amp;gt;  num1 - num2
+    }
+   
+    val result3 = resultByOpt(5,6){
+        num1, num2 -&amp;gt;  num1 * num2
+    }
+   
+    val result4 = resultByOpt(6,3){
+        num1, num2 -&amp;gt;  num1 / num2
+    }
+   
+    println(&quot;result1 = $result1&quot;)
+    println(&quot;result2 = $result2&quot;)
+    println(&quot;result3 = $result3&quot;)
+    println(&quot;result4 = $result4&quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;///返回值为函数
+fun test5(a:Int):()-&amp;gt;Int{
+    println(&quot;&quot;)
+    var b = 3
+    return fun():Int{
+        println(&quot;b=&amp;gt; $b&quot;)
+        b++
+        return b + a
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;常用的标准高阶函数&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;TODO函数：将会抛出异常，根据参数的内容输出异常内容&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;run函数：两种用法&lt;/p&gt;
+
+    &lt;p&gt;​	当我们需要执行一个&lt;code class=&quot;highlighter-rouge&quot;&gt;代码块&lt;/code&gt;的时候就可以用到这个函数,并且这个代码块是独立的。即我可以在&lt;code class=&quot;highlighter-rouge&quot;&gt;run()&lt;/code&gt;函数中写一些和项目无关的代码，因为它不会影响项目的正常运行。&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;private fun testRun1() {
+    val str = &quot;kotlin&quot;
+   
+    run{
+        val str = &quot;java&quot;   // 和上面的变量不会冲突
+        println(&quot;str = $str&quot;)
+    }
+   
+    println(&quot;str = $str&quot;)
+}    
+&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;​	因为&lt;code class=&quot;highlighter-rouge&quot;&gt;run&lt;/code&gt;函数执行了我传进去的&lt;code class=&quot;highlighter-rouge&quot;&gt;lambda&lt;/code&gt;表达式并返回了执行的结果，所以当一个业务逻辑都需要执行同一段代码而根据不同的条件去判断得到不同结果的时候。可以用到&lt;code class=&quot;highlighter-rouge&quot;&gt;run&lt;/code&gt;函数&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;val index = 3
+val num = run {
+    when(index){
+        0 -&amp;gt; &quot;kotlin&quot;
+        1 -&amp;gt; &quot;java&quot;
+        2 -&amp;gt; &quot;php&quot;
+        3 -&amp;gt; &quot;javaScript&quot;
+        else -&amp;gt; &quot;none&quot;
+    }
+}.length
+println(&quot;num = $num&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;​	被一个对象所调用。&lt;strong&gt;当我们传入的lambda表达式想要使用当前对象的上下文的时候，我们可以使用这个函数。&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;val str = &quot;kotlin&quot;
+str.run {
+    println( &quot;length = ${this.length}&quot; )
+    println( &quot;first = ${first()}&quot;)
+    println( &quot;last = ${last()}&quot; )
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;同时还有&lt;code class=&quot;highlighter-rouge&quot;&gt;with&lt;/code&gt; / &lt;code class=&quot;highlighter-rouge&quot;&gt;let&lt;/code&gt; / &lt;code class=&quot;highlighter-rouge&quot;&gt;apply&lt;/code&gt; / &lt;code class=&quot;highlighter-rouge&quot;&gt;also&lt;/code&gt; / &lt;code class=&quot;highlighter-rouge&quot;&gt;takeIf()&lt;/code&gt; / &lt;code class=&quot;highlighter-rouge&quot;&gt;takeUnless&lt;/code&gt; / &lt;code class=&quot;highlighter-rouge&quot;&gt;repeat()&lt;/code&gt; / &lt;code class=&quot;highlighter-rouge&quot;&gt;lazy()&lt;/code&gt; 分别有不同的用法&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><category term="Kotlin" /><summary>浙大成功软件实习、学习</summary></entry><entry><title>Kotlin 学习记录（Lambda &amp;amp; 空类型）</title><link href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(Lambda-&-%E7%A9%BA%E7%B1%BB%E5%9E%8B-%E7%A9%BA%E5%AE%89%E5%85%A8)/" rel="alternate" type="text/html" title="Kotlin 学习记录（Lambda &amp; 空类型）" /><published>2019-07-15T00:00:00+08:00</published><updated>2019-07-15T00:00:00+08:00</updated><id>https://www.maplestory.work/ Kotlin 学习记录(Lambda &amp; 空类型、空安全)</id><content type="html" xml:base="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(Lambda-&amp;-%E7%A9%BA%E7%B1%BB%E5%9E%8B-%E7%A9%BA%E5%AE%89%E5%85%A8)/">&lt;center&gt;&lt;h2&gt;&lt;b&gt; Kotlin 学习记录 &lt;/b&gt;&lt;/h2&gt;&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;本文只记录重要的或者与C/C++、Java 出入较大的内容
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;lambda-&quot;&gt;Lambda 表达式&lt;/h2&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;语法&lt;/h3&gt;
+
+&lt;p&gt;无参数的情况&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;  val fun1 = {9} //定义了一个返回了Int的函数
+  
+  //该定义参照了情况3
+  //传入一个Lambda来表示的形式参数，该形参为一个无参返回Int的函数
+  var fun11 : (()-&amp;gt;(Int)) -&amp;gt;Int = {initfunc -&amp;gt; initfunc()} 
+  
+  var value00 = fun11(fun1)
+  println(&quot;value00 =&amp;gt; $value00&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;有参数的情况&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;  var value1 = 9
+  val fun2:(Int,Int)-&amp;gt;Double = {a,b-&amp;gt; (a-b).toDouble()}
+  var value2 = fun2(value1,3)
+  println(&quot;value2 =&amp;gt; $value2&quot;)//输出：value2 =&amp;gt; 6.0
+  
+  //等价形式如下
+  var fun3 = {a:Int,b:Int -&amp;gt; a+b}
+  var value3 = fun3(3,6)
+  
+  println(&quot;value3 =&amp;gt; $value3&quot;)//输出：value3 =&amp;gt; 9
+  //3. lambda表达式作为函数中的参数的时候，这里举一个例子：
+  //  fun test(a : Int, 参数名 : (参数1 ： 类型，参数2 : 类型, ... ) -&amp;gt; 表达式返	 //回类型){
+  //     ...
+  //  }
+  //
+  
+  //下面两个新形式都可以作为value计算的表达式，fun与var功能似乎一样了？NO
+  //三种形式定义该test函数，fun声明，var声明，匿名函数。
+  //fun test(a:Int,b:Int,add:(Int,Int)-&amp;gt;Int):Int{ return add(a,b)}//是一个函数
+  //var test: (Int,Int,(Int,Int)-&amp;gt;Int) -&amp;gt; Int = {a,b,add -&amp;gt; add(a,b)}//该变量是lambda变量
+  
+  var test = fun(a:Int,b:Int,add:(Int,Int)-&amp;gt;Int):Int{ return add(a,b)} //是一个函数
+  
+  println(&quot;value4 = $value4&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;​		&lt;code class=&quot;highlighter-rouge&quot;&gt;lambda&lt;/code&gt;表达式总是被大括号括着&lt;/p&gt;
+
+&lt;p&gt;​		定义完整的&lt;code class=&quot;highlighter-rouge&quot;&gt;Lambda&lt;/code&gt;表达式如上面实例中的语法2，它有其完整的参数类型标注，与表达式返回值。当我们把一些类型标注省略的情况下，就如上面实例中的语法2的另外一种类型。当它推断出的返回值类型不为&lt;code class=&quot;highlighter-rouge&quot;&gt;Unit&lt;/code&gt;时，它的返回值即为-&amp;gt;符号后代码段中的最后一个表达式的类型（如同if-else语句块中的返回值一样）&lt;/p&gt;
+
+&lt;p&gt;​		当函数的参数仅有一个Lambda表达式的时候可以&lt;strong&gt;省略参数的那个小括号&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;it&quot;&gt;it&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;it不是关键字&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;it在高阶函数中的lambda表达式的参数只有一个的时候可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;it&lt;/code&gt;来使用此参数。&lt;code class=&quot;highlighter-rouge&quot;&gt;it&lt;/code&gt;可表示&lt;strong&gt;单个参数的隐式名称&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;例子：&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;   fun test(num1 : Int, bool : (Int) -&amp;gt; Boolean) : Int{
+     return if (bool(num1)){ num1 } else 0
+  }
+  
+  println(test(10,{it &amp;gt; 5})) // {} 代表这是一个Lambda表达式，无{}会使得编译器不认识it
+  println(test(4,{it &amp;gt; 5}))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;_&lt;/h3&gt;
+
+&lt;p&gt;在使用&lt;code class=&quot;highlighter-rouge&quot;&gt;Lambda&lt;/code&gt;表达式的时候，可以用下划线表示未使用的参数，表示不处理这个参数。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;  val map = mapOf&amp;lt;String,String&amp;gt;(&quot;key1&quot; to &quot;value1&quot;,&quot;key2&quot; to  &quot;value2&quot;,&quot;key3&quot; to  &quot;value3&quot;)
+  
+  map.forEach{
+      key,value -&amp;gt; println(&quot;$key &#39;-&#39; $value&quot;)
+  }
+  map.forEach{
+          _,value -&amp;gt; println(&quot; &#39;-&#39; $value&quot;)
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;匿名函数&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;  val test1 = fun (x:Int,y:Int) = x+y; //单表达式函数可以 = 替换 {}
+  val test2 = fun (x:Int,y:Int) : Int= x+y;
+  val test3 = fun (x:Int,y:Int) : Int{
+      return x+y
+  }
+  println(test1(1,3))
+  println(test2(2,3))
+  println(test3(3,3))
+  
+  /**
+  //这是错的，fun的需要返回值为Unit，但你给了个Int
+      val test4= fun(x:Int,y:Int) {
+          return x+y
+      } 
+  */
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;带接收者的函数字面值&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;匿名函数作为接收者类型&lt;/p&gt;
+
+    &lt;p&gt;匿名函数语法允许直接指定函数字面值的接收者类型，如果你需要使用带接收者的函数类型声明一个变量。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;val iop = fun  Int.(other:Int):Int = this + other
+println(20.iop(2)) //上面的this指的是左边的20 或者是 上面fun后的第一个Int
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;​&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Lambda表达式作为接收者类型&lt;/p&gt;
+
+    &lt;p&gt;要用Lambda表达式作为接收者类型的前提是**接收着类型可以从上下文中推断出来&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;
+class HTML{
+	fun body(){
+		println(&quot;This is HTML body&quot;)
+	}
+}
+
+fun  html(init: HTML.() -&amp;gt; Unit): HTML{
+	val html = HTML()
+	html.init()
+	return html
+}
+
+html {
+	body()
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;​&lt;/p&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;闭包&lt;/h3&gt;
+
+&lt;p&gt;闭包，可以函数中包含函数。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;携带状态&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;让函数返回一个函数，并携带状态值
+
+fun test5(a:Int):()-&amp;gt;Int{
+    println(&quot;&quot;)
+    var b = 3
+    return fun():Int{
+        println(&quot;b=&amp;gt; $b&quot;)
+        b++
+        return b + a
+    }
+}
+
+var t = test5(3)
+println(t()) // 每次执行t函数的时候，b变量的值都是保留了上次执行结束的值，
+			 // 因此，叫做携带状态值
+println(t())
+println(t())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;引用外部变量，并改变外部变量的值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;var sum = 0
+val arr = arrayOf(1,2,3,4,5,6,7,8,9,10,11)
+arr.filter { it&amp;lt;7 }.forEach{sum += it}
+//arr.filter { it&amp;lt;7 }.forEach ({sum += it})
+
+println(sum)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;可空类型、空安全、非空断言&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;判空的方法，if-else / ?. 判断&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;var str : String? = &quot;12346&quot;
+str = null
+   
+println(str?.length) //输出null
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;当一个函数/方法有返回值时，如果方法中的代码使用&lt;code class=&quot;highlighter-rouge&quot;&gt;?.&lt;/code&gt;去返回一个值，那么方法的返回值的类型后面也要加上&lt;code class=&quot;highlighter-rouge&quot;&gt;?&lt;/code&gt;符号&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;let操作符&lt;/p&gt;
+
+    &lt;p&gt;let操作符作用：当使用?.符号时验证时忽略掉null&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;val arrTest : Array&amp;lt;Int?&amp;gt; = arrayOf(1,2,null,3,null,5,6,null)
+   
+// 传统写法
+for (index in arrTest) {
+    if (index == null){
+        continue
+    }
+    println(&quot;index =&amp;gt; $index&quot;)
+}
+   
+// let写法
+for (index in arrTest) {
+    index?.let { println(&quot;index =&amp;gt; $it&quot;) }
+}
+   
+/**
+    index =&amp;gt; 1
+    index =&amp;gt; 2
+    index =&amp;gt; 3
+    index =&amp;gt; 5
+    index =&amp;gt; 6
+*/
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Evils操作符&lt;/p&gt;
+
+    &lt;p&gt;安全性操作符有三种：&lt;code class=&quot;highlighter-rouge&quot;&gt;?:&lt;/code&gt; /&lt;code class=&quot;highlighter-rouge&quot;&gt; !!&lt;/code&gt; / &lt;code class=&quot;highlighter-rouge&quot;&gt;as?&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;?:&lt;/code&gt;&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-kotlin&quot;&gt;val testStr : String? = null
+   
+var length = 0
+   
+// 例： 当testStr不为空时，输出其长度，反之输出-1
+   
+// 传统写法
+length = if (testStr != null) testStr.length else -1
+   
+// ?: 写法
+length = testStr?.length ?: -1
+   
+println(length)
+&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;!!&lt;/code&gt;&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;val testStr : String? = null
+println(testStr!!.length)
+//如果变量为空，使用!!修饰，运行时会抛出空指针异常
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;as&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;as&lt;/code&gt;进行强制转换，在不能转换时会抛出异常，而使用&lt;code class=&quot;highlighter-rouge&quot;&gt;as?&lt;/code&gt;则会返回&lt;code class=&quot;highlighter-rouge&quot;&gt;null&lt;/code&gt;，但不会抛出异常。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><category term="Kotlin" /><summary>浙大成功软件实习、学习</summary></entry><entry><title>C# 查看串口</title><link href="https://www.maplestory.work/C-%E6%9F%A5%E7%9C%8B%E4%B8%B2%E5%8F%A3/" rel="alternate" type="text/html" title="C# 查看串口" /><published>2019-05-31T00:00:00+08:00</published><updated>2019-05-31T00:00:00+08:00</updated><id>https://www.maplestory.work/ C# 查看串口</id><content type="html" xml:base="https://www.maplestory.work/C-%E6%9F%A5%E7%9C%8B%E4%B8%B2%E5%8F%A3/">&lt;center&gt;&lt;h2&gt;&lt;b&gt; C# 查看串口 &lt;/b&gt;&lt;/h2&gt;&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;场景简述&lt;/h3&gt;
+
+&lt;p&gt;​		在&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;方法介绍&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;在WPF中，每一个窗口都拥有一个Loaded事件传入接口，可以将函数传入该接口（即把函数委托给Loaded事件）。Loaded事件在元素即将要被渲染时触发。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在Loaded时定义拦截Windows消息拦截事件。事件函数（DeviceChanged）被委托给HwndSource的Hook。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在DeviceChanged函数中过滤串口插拔事件，并执行串口插拔后需要完善的逻辑操作。&lt;/p&gt;
+    &lt;ol&gt;
+      &lt;li&gt;事件序号：0x219 移动设备改变事件。0x8000设备插入事件。0x8004设备拔出事件。&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;具体实现&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MainWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;Loaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MainWindow_Loaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MainWindow_Loaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RoutedEventArgs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;HwndSource&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hwndSource&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PresentationSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FromVisual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HwndSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hwndSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     	&lt;span class=&quot;n&quot;&gt;hwndSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddHook&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HwndSourceHook&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DevieceChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IntPtr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DeviceChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntPtr&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hwnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntPtr&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntPtr&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ref&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PortNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WM_DEVICECHANGE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToInt32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DBT_DEVICEARRIVAL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//设备插入  
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;n&quot;&gt;PortNames&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SerialPort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetPortNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsWorking&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PortNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ConfigInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;serialPortUtil&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                     &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                         &lt;span class=&quot;n&quot;&gt;serialPortUtil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;OpenPort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                         &lt;span class=&quot;n&quot;&gt;MsgBox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;串口连接成功！&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DBT_DEVICEREMOVECOMPLETE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//设备卸载
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;n&quot;&gt;PortNames&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SerialPort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetPortNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;  
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsWorking&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PortNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ConfigInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                     &lt;span class=&quot;n&quot;&gt;MsgBox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;串口连接断开！&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IntPtr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Zero&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;```&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;通过该方法可以实现对串口插拔事件的监听。&lt;/p&gt;
+
+&lt;p&gt;参考内容&lt;/p&gt;
+
+&lt;p&gt;​		&lt;a href=&quot;https://www.cnblogs.com/xj2015/p/6100406.html&quot;&gt;C#获取串口列表&lt;/a&gt;&lt;/p&gt;</content><category term="串口通讯" /><category term="C#" /><summary>不断强化自己的开发技能</summary></entry><entry><title>C# 监听串口插拔事件</title><link href="https://www.maplestory.work/C-%E7%9B%91%E5%90%AC%E4%B8%B2%E5%8F%A3%E6%8F%92%E6%8B%94%E4%BA%8B%E4%BB%B6/" rel="alternate" type="text/html" title="C# 监听串口插拔事件" /><published>2019-05-30T00:00:00+08:00</published><updated>2019-05-30T00:00:00+08:00</updated><id>https://www.maplestory.work/ C# 监听串口插拔事件</id><content type="html" xml:base="https://www.maplestory.work/C-%E7%9B%91%E5%90%AC%E4%B8%B2%E5%8F%A3%E6%8F%92%E6%8B%94%E4%BA%8B%E4%BB%B6/">&lt;center&gt;&lt;h2&gt;&lt;b&gt; C# 监听串口插拔事件 &lt;/b&gt;&lt;/h2&gt;&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;场景简述&lt;/h3&gt;
+
+&lt;p&gt;​		在进行C#串口开发时，往往需要对可访问的串口通过ComboList组件进行呈现共用户进行选择软件需要连接的串口，在这过程中就需要对串口的插拔事件进行监听。当事件到来对列表、串口开关进行对应的变化。使得整个软件操作起来更加合理。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;方法介绍&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;在WPF中，每一个窗口都拥有一个Loaded事件传入接口，可以将函数传入该接口（即把函数委托给Loaded事件）。Loaded事件在元素即将要被渲染时触发。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在Loaded时定义拦截Windows消息拦截事件。事件函数（DeviceChanged）被委托给HwndSource的Hook。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在DeviceChanged函数中过滤串口插拔事件，并执行串口插拔后需要完善的逻辑操作。&lt;/p&gt;
+    &lt;ol&gt;
+      &lt;li&gt;事件序号：0x219 移动设备改变事件。0x8000设备插入事件。0x8004设备拔出事件。&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;具体实现&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MainWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;Loaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MainWindow_Loaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MainWindow_Loaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RoutedEventArgs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;HwndSource&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hwndSource&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PresentationSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FromVisual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HwndSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hwndSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     	&lt;span class=&quot;n&quot;&gt;hwndSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddHook&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HwndSourceHook&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DevieceChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IntPtr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DeviceChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntPtr&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hwnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntPtr&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntPtr&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ref&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PortNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WM_DEVICECHANGE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToInt32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DBT_DEVICEARRIVAL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//设备插入  
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;n&quot;&gt;PortNames&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SerialPort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetPortNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsWorking&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PortNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ConfigInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;serialPortUtil&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                     &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                         &lt;span class=&quot;n&quot;&gt;serialPortUtil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;OpenPort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                         &lt;span class=&quot;n&quot;&gt;MsgBox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;串口连接成功！&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DBT_DEVICEREMOVECOMPLETE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//设备卸载
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;n&quot;&gt;PortNames&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SerialPort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetPortNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;  
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsWorking&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PortNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ConfigInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                     &lt;span class=&quot;n&quot;&gt;MsgBox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;串口连接断开！&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;                 &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IntPtr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Zero&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;```&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;通过该方法可以实现对串口插拔事件的监听。&lt;/p&gt;
+
+&lt;p&gt;参考文献&lt;/p&gt;
+
+&lt;p&gt;​		&lt;a href=&quot;https://blog.csdn.net/barry_hui/article/details/80326403&quot;&gt;C# WPF USB 串口插入拔出识别监测&lt;/a&gt;&lt;/p&gt;</content><category term="串口通讯" /><category term="C#" /><summary>不断强化自己的开发技能</summary></entry><entry><title>设计模式</title><link href="https://www.maplestory.work/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="alternate" type="text/html" title="设计模式" /><published>2019-05-19T00:00:00+08:00</published><updated>2019-05-19T00:00:00+08:00</updated><id>https://www.maplestory.work/ 设计模式</id><content type="html" xml:base="https://www.maplestory.work/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">&lt;center&gt;&lt;h2&gt;&lt;b&gt; 设计模式 &lt;/b&gt;&lt;/h2&gt;&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;序&lt;/h3&gt;
+
+&lt;p&gt;​	不能滥用static。&lt;/p&gt;
+
+&lt;p&gt;​	正常的设计模式上不能随便使用static变量，应该先懂得如何编写足以证明“赋值结果冲突、混乱”的测试用例，然后再使用static变量&lt;sup&gt;&lt;a href=&quot;https://bbs.csdn.net/topics/392167990?page=1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;目录&lt;/h3&gt;
+
+&lt;p&gt;&lt;b&gt;生产者消费者模式&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;观察者模式&lt;/b&gt;&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;单例模式&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;工厂模式&lt;/b&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;生产者消费者模式&lt;/h3&gt;</content><category term="设计模式" /><category term="C++" /><summary>不断强化自己的开发技能</summary></entry></feed>

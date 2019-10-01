@@ -1,0 +1,147 @@
+<!DOCTYPE html> <html> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> <title>Kotlin 学习记录（Lambda &amp; 空类型） &#8211; Maple Story</title> <meta name="description" content="浙大成功软件实习、学习"> <meta name="keywords" content="Kotlin"> <!-- Twitter Cards --> <meta name="twitter:card" content="summary"> <meta name="twitter:image" content="halve.png"> <meta name="twitter:title" content="Kotlin 学习记录（Lambda & 空类型）"> <meta name="twitter:description" content="浙大成功软件实习、学习"> <!-- Open Graph --> <meta property="og:locale" content="en_US"> <meta property="og:type" content="article"> <meta property="og:title" content="Kotlin 学习记录（Lambda & 空类型）"> <meta property="og:description" content="浙大成功软件实习、学习"> <meta property="og:url" content="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(Lambda-&-%E7%A9%BA%E7%B1%BB%E5%9E%8B-%E7%A9%BA%E5%AE%89%E5%85%A8)/"> <meta property="og:site_name" content="Maple Story"> <meta property="og:image" content="https://www.maplestory.work/images/halve.png"> <link rel="canonical" href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(Lambda-&-%E7%A9%BA%E7%B1%BB%E5%9E%8B-%E7%A9%BA%E5%AE%89%E5%85%A8)/"> <!-- Handheld --> <meta name="HandheldFriendly" content="True"> <meta name="MobileOptimized" content="320"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Feed --> <link type="application/atom+xml" rel="alternate" href="https://www.maplestory.work/feed.xml" title="" /> <!-- Favicons --> <link rel="shortcut icon" type="image/png" href="https://www.maplestory.work/favicon.png" /> <link rel="shortcut icon" href="https://www.maplestory.work/favicon.ico" /> <!-- CSS --> <link rel="stylesheet" type="text/css" href="https://www.maplestory.work/assets/css/main.css"> <!-- Left Block Image for Posts --> <style type="text/css"> #posts.inner-post-page .block-left {background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://www.maplestory.work/images/unsplash-gallery-image-3.jpg) no-repeat;background-size: cover;} </style> <!-- Left Block Images for Home and Pages --> <style type="text/css"> #posts .block-left {background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://www.maplestory.work/images/unsplash-image-10.jpg) no-repeat;background-size: cover, cover;} .block-left {background: linear-gradient(rgba(44,45,51,0.9), rgba(44,45,51,0.9)), url(https://www.maplestory.work/images/home.jpg) no-repeat;background-size: cover;} </style> </head> <body id="posts" class="inner-post-page"> <div class="block-left"> <div class="content"> <a href="https://www.maplestory.work" class="logo"><img src="https://www.maplestory.work/images/halve.png"></a> <div class="post-title-section"> <div class="section-line">Posts <em>/</em></div> <h1 class="section-title">Kotlin 学习记录（Lambda &amp; 空类型） </h1> <ul class="tags"> <li><a href="https://www.maplestory.work/tags#Kotlin">Kotlin</a></li> </ul> <div class="section-line reverse"><a href="https://www.maplestory.work/posts">Back to posts</a> <em>/</em></div> </div> </div> </div> <div class="block-right"> <a href="../posts.html" title="posts" class="posts-menu-icon"></a> <a title="projects" class="projects-menu-icon"> <span></span> </a> <div class="inner-post content"> <div class="date-highlight">15 Jul 2019</div> <center><h2><b> Kotlin 学习记录 </b></h2></center> <p><br /></p> <div class="highlighter-rouge"><pre class="highlight"><code>本文只记录重要的或者与C/C++、Java 出入较大的内容
+</code></pre></div> <h2 id="lambda-">Lambda 表达式</h2> <h3 id="section">语法</h3> <p>无参数的情况</p><pre><code class="language-kotlin">  val fun1 = {9} //定义了一个返回了Int的函数
+  
+  //该定义参照了情况3
+  //传入一个Lambda来表示的形式参数，该形参为一个无参返回Int的函数
+  var fun11 : (()-&gt;(Int)) -&gt;Int = {initfunc -&gt; initfunc()} 
+  
+  var value00 = fun11(fun1)
+  println("value00 =&gt; $value00")
+</code></pre><p>有参数的情况</p><pre><code class="language-kotlin">  var value1 = 9
+  val fun2:(Int,Int)-&gt;Double = {a,b-&gt; (a-b).toDouble()}
+  var value2 = fun2(value1,3)
+  println("value2 =&gt; $value2")//输出：value2 =&gt; 6.0
+  
+  //等价形式如下
+  var fun3 = {a:Int,b:Int -&gt; a+b}
+  var value3 = fun3(3,6)
+  
+  println("value3 =&gt; $value3")//输出：value3 =&gt; 9
+  //3. lambda表达式作为函数中的参数的时候，这里举一个例子：
+  //  fun test(a : Int, 参数名 : (参数1 ： 类型，参数2 : 类型, ... ) -&gt; 表达式返	 //回类型){
+  //     ...
+  //  }
+  //
+  
+  //下面两个新形式都可以作为value计算的表达式，fun与var功能似乎一样了？NO
+  //三种形式定义该test函数，fun声明，var声明，匿名函数。
+  //fun test(a:Int,b:Int,add:(Int,Int)-&gt;Int):Int{ return add(a,b)}//是一个函数
+  //var test: (Int,Int,(Int,Int)-&gt;Int) -&gt; Int = {a,b,add -&gt; add(a,b)}//该变量是lambda变量
+  
+  var test = fun(a:Int,b:Int,add:(Int,Int)-&gt;Int):Int{ return add(a,b)} //是一个函数
+  
+  println("value4 = $value4")
+</code></pre><p>​ <code class="highlighter-rouge">lambda</code>表达式总是被大括号括着</p> <p>​ 定义完整的<code class="highlighter-rouge">Lambda</code>表达式如上面实例中的语法2，它有其完整的参数类型标注，与表达式返回值。当我们把一些类型标注省略的情况下，就如上面实例中的语法2的另外一种类型。当它推断出的返回值类型不为<code class="highlighter-rouge">Unit</code>时，它的返回值即为-&gt;符号后代码段中的最后一个表达式的类型（如同if-else语句块中的返回值一样）</p> <p>​ 当函数的参数仅有一个Lambda表达式的时候可以<strong>省略参数的那个小括号</strong></p> <h3 id="it">it</h3> <ul> <li>it不是关键字</li> <li> <p>it在高阶函数中的lambda表达式的参数只有一个的时候可以使用<code class="highlighter-rouge">it</code>来使用此参数。<code class="highlighter-rouge">it</code>可表示<strong>单个参数的隐式名称</strong></p> <p>例子：</p> </li> </ul><pre><code class="language-kotlin">   fun test(num1 : Int, bool : (Int) -&gt; Boolean) : Int{
+     return if (bool(num1)){ num1 } else 0
+  }
+  
+  println(test(10,{it &gt; 5})) // {} 代表这是一个Lambda表达式，无{}会使得编译器不认识it
+  println(test(4,{it &gt; 5}))
+</code></pre><h3 id="section-1">_</h3> <p>在使用<code class="highlighter-rouge">Lambda</code>表达式的时候，可以用下划线表示未使用的参数，表示不处理这个参数。</p><pre><code class="language-kotlin">  val map = mapOf&lt;String,String&gt;("key1" to "value1","key2" to  "value2","key3" to  "value3")
+  
+  map.forEach{
+      key,value -&gt; println("$key '-' $value")
+  }
+  map.forEach{
+          _,value -&gt; println(" '-' $value")
+  }
+</code></pre><h3 id="section-2">匿名函数</h3><pre><code class="language-kotlin">  val test1 = fun (x:Int,y:Int) = x+y; //单表达式函数可以 = 替换 {}
+  val test2 = fun (x:Int,y:Int) : Int= x+y;
+  val test3 = fun (x:Int,y:Int) : Int{
+      return x+y
+  }
+  println(test1(1,3))
+  println(test2(2,3))
+  println(test3(3,3))
+  
+  /**
+  //这是错的，fun的需要返回值为Unit，但你给了个Int
+      val test4= fun(x:Int,y:Int) {
+          return x+y
+      } 
+  */
+</code></pre><h3 id="section-3">带接收者的函数字面值</h3> <ol> <li> <p>匿名函数作为接收者类型</p> <p>匿名函数语法允许直接指定函数字面值的接收者类型，如果你需要使用带接收者的函数类型声明一个变量。</p> </li> </ol><pre><code class="language-kotlin">val iop = fun  Int.(other:Int):Int = this + other
+println(20.iop(2)) //上面的this指的是左边的20 或者是 上面fun后的第一个Int
+
+</code></pre><p>​</p> <ol> <li> <p>Lambda表达式作为接收者类型</p> <p>要用Lambda表达式作为接收者类型的前提是**接收着类型可以从上下文中推断出来</p> </li> </ol><pre><code class="language-kotlin">
+class HTML{
+	fun body(){
+		println("This is HTML body")
+	}
+}
+
+fun  html(init: HTML.() -&gt; Unit): HTML{
+	val html = HTML()
+	html.init()
+	return html
+}
+
+html {
+	body()
+}
+</code></pre><p>​</p> <h3 id="section-4">闭包</h3> <p>闭包，可以函数中包含函数。</p> <ul> <li>携带状态</li> </ul><pre><code class="language-kotlin">让函数返回一个函数，并携带状态值
+
+fun test5(a:Int):()-&gt;Int{
+    println("")
+    var b = 3
+    return fun():Int{
+        println("b=&gt; $b")
+        b++
+        return b + a
+    }
+}
+
+var t = test5(3)
+println(t()) // 每次执行t函数的时候，b变量的值都是保留了上次执行结束的值，
+			 // 因此，叫做携带状态值
+println(t())
+println(t())
+</code></pre><ul> <li>引用外部变量，并改变外部变量的值</li> </ul><pre><code class="language-kotlin">var sum = 0
+val arr = arrayOf(1,2,3,4,5,6,7,8,9,10,11)
+arr.filter { it&lt;7 }.forEach{sum += it}
+//arr.filter { it&lt;7 }.forEach ({sum += it})
+
+println(sum)
+</code></pre><h2 id="section-5">可空类型、空安全、非空断言</h2> <ol> <li> <p>判空的方法，if-else / ?. 判断</p><pre><code class="language-kotlin">var str : String? = "12346"
+str = null
+   
+println(str?.length) //输出null
+</code></pre></li> <li> <p>当一个函数/方法有返回值时，如果方法中的代码使用<code class="highlighter-rouge">?.</code>去返回一个值，那么方法的返回值的类型后面也要加上<code class="highlighter-rouge">?</code>符号</p> </li> <li> <p>let操作符</p> <p>let操作符作用：当使用?.符号时验证时忽略掉null</p> <div class="highlighter-rouge"><pre class="highlight"><code>val arrTest : Array&lt;Int?&gt; = arrayOf(1,2,null,3,null,5,6,null)
+   
+// 传统写法
+for (index in arrTest) {
+    if (index == null){
+        continue
+    }
+    println("index =&gt; $index")
+}
+   
+// let写法
+for (index in arrTest) {
+    index?.let { println("index =&gt; $it") }
+}
+   
+/**
+    index =&gt; 1
+    index =&gt; 2
+    index =&gt; 3
+    index =&gt; 5
+    index =&gt; 6
+*/
+</code></pre></div> </li> <li> <p>Evils操作符</p> <p>安全性操作符有三种：<code class="highlighter-rouge">?:</code> /<code class="highlighter-rouge"> !!</code> / <code class="highlighter-rouge">as?</code></p> <p><code class="highlighter-rouge">?:</code></p><pre><code class="language-kotlin">val testStr : String? = null
+   
+var length = 0
+   
+// 例： 当testStr不为空时，输出其长度，反之输出-1
+   
+// 传统写法
+length = if (testStr != null) testStr.length else -1
+   
+// ?: 写法
+length = testStr?.length ?: -1
+   
+println(length)
+</code></pre><p><code class="highlighter-rouge">!!</code></p> <div class="highlighter-rouge"><pre class="highlight"><code>val testStr : String? = null
+println(testStr!!.length)
+//如果变量为空，使用!!修饰，运行时会抛出空指针异常
+</code></pre></div> <p><code class="highlighter-rouge">as</code></p> <p>使用<code class="highlighter-rouge">as</code>进行强制转换，在不能转换时会抛出异常，而使用<code class="highlighter-rouge">as?</code>则会返回<code class="highlighter-rouge">null</code>，但不会抛出异常。</p> </li> </ol> <br> <nav class="pagination"> <a href="https://www.maplestory.work/C-%E6%9F%A5%E7%9C%8B%E4%B8%B2%E5%8F%A3/" class="pagination_pager" title="C# 查看串口 ">previous</a> <a href="https://www.maplestory.work/Kotlin-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%87%BD%E6%95%B0)/" class="pagination_pager" title="Kotlin 学习记录（函数） ">next</a> </nav> </div> </div> <!-- JS --> <script src="https://www.maplestory.work/assets/js/main.min.js"></script> <div class="overlay"> <ul class="projects-menu"> <li style="background:url(https://www.maplestory.work/images/benjamin-deyoung-unsplash.jpg) center center no-repeat;"> <a href="https://github.com/Maple-Chan" target="_blank" rel="nofollow external"> <span> GitHub Home </span> </a> </li> </ul> </div> </body> </html>
