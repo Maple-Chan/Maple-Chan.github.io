@@ -17,20 +17,16 @@
             </h3>
 
             <div class="nav">
-                <a class="page-link" href="/page/MainPage.html">Home &nbsp;</a>
-                <a class="page-link" href="/page/CurriculumVitae.html"> CV &nbsp;</a>
+                <a class="page-link" href="/CurriculumVitae.html"> CV &nbsp;</a>
                 <a class="page-link" href="/tags#"> Tags</a>
             </div>
 
         </header>
 
-        <div id="content" class="content">
-            <!-- Ö÷ÒªÐ´ Recent Posts-->
-            
-            
-
-
-        </div>
+	<div>
+		I'm a software engineer.
+		
+	</div>
 
         <footer>
             <p class="copyright">
