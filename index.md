@@ -13,4 +13,4 @@ Male
 Software Engineer
 
 
-### [CV](/cv)
+### [CurriculumVitae](/cv)

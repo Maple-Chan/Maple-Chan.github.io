@@ -3,7 +3,7 @@ layout:    page
 permalink: "/cv"
 author:    jdecent
 keywords:  about person demo example
-title:     Jekyll Decent CV
+title:     CurriculumVitae
 menutitle: CV
 weight:    70
 excerpt:   This page contains the curriculum vitae (CV) of the author.
