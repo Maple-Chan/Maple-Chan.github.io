@@ -49,6 +49,7 @@ excerpt:   This page contains the curriculum vitae (CV) of the author.
     <div class="timeline-block">
         <div class="marker"></div>
         <div class="timeline-content">
+            <br/><br/><br/>
             <div class="time">{{employment.time}}</div>
             <h3>{{employment.position}}</h3>
             <span>{{employment.company}} ({{employment.location}})</span>
