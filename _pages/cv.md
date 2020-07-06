@@ -42,13 +42,12 @@ excerpt:   This page contains the curriculum vitae (CV) of the author.
     {% endfor %}
 </div>
 
-<h2 class="employment-heading">Employment History</h2>
+<h2 class="employment-heading">实习经历</h2>
 
 <div class="timeline-container">
     {% for employment in cv.employment %}
     <div class="timeline-block">
         <div class="marker"></div>
-        <div class="time">{{employment.time}}</div>
         <div class="timeline-content">
             <div class="time">{{employment.time}}</div>
             <h3>{{employment.position}}</h3>
@@ -63,31 +62,3 @@ excerpt:   This page contains the curriculum vitae (CV) of the author.
     {% endfor %}
 </div>
 
-
-<h2 class="project-heading">Project History</h2>
-
-{% for project in cv.projects %}
-<div class="md-card shadow project">
-    <div class="meta">
-        <div class="team">{{project.team}}</div>
-        <div class="time">{{project.time}}</div>
-    </div>
-    <div class="content">
-        <h2>{{project.title}}</h2>
-        <ul>
-            {% for responsibility in project.responsibilities %}
-            <li>{{responsibility}}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="footer">
-        <ul>
-            {% assign technologies = project.technologies | split: ',' %}
-            {% for technology in technologies %}
-            <li> {{ technology }}</li>
-            {% endfor %}
-        </ul>
-        <span class="icon-briefcase"></span>
-    </div>
-</div>
-{% endfor %}

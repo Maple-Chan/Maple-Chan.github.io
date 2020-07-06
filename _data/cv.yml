@@ -6,27 +6,28 @@ jdecent:
         - "WPF, Unity3D, Eclipse Plugin, JavaFX"
         - "Series Communication(Java & C#)"
     education:
-        - time:             "2015 - 2019"
-          location:         "浙江工业大学"
-          description:      "Computer Science"
         - time:             "2019 - 2021"
-          location:         "Zhejiang University"
-          description:      "Software Technology"
+          location:         "硕士：浙江大学"
+          description:      "专业：软件工程"
+        - time:             "2015 - 2019"
+          location:         "本科：浙江工业大学"
+          description:      "专业：计算机科学与技术"
+
     employment:
         - time:             "04.2020 - 06.2021"
-          location:         "Zhejiang"
+          location:         "浙江"
           company:          "成功软件"
-          position:         "Software Engineer"
+          position:         "区块链&后端软件工程师"
           responsibilities:
             - "构建超级账本(Hyperledger Fabric)区块链网络环境"
             - "区块链联盟链平台的部分后端内容开发"
         - time:             "10.2018 - 7.2019"
-          location:         "Shanghai"
+          location:         "上海"
           company:          "Chipways Company"
-          position:         "Software Developer"
+          position:         "软件工程师"
           responsibilities:
             - "负责芯片烧录器上位机开发"
-            - "开发 Chipways XL6600 Integrated Development Enviroment"
+            - "开发 Chipways XL6600 Integrated Development Enviroment(IDE)"
             - "开发为公司设计制造的做测试的PC软件"
 
     projects:
