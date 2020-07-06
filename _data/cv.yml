@@ -28,7 +28,7 @@ jdecent:
           position:         "软件工程师"
           responsibilities:
             - "负责芯片烧录器上位机开发"
-            - "负责基于Eclipse Platform框架的 "Chipways XL6600 集成开发环境(IDE)" 开发"
+            - "负责基于Eclipse Platform框架的 `Chipways XL6600 集成开发环境(IDE)` 开发"
             - "负责芯片测试上位机PC软件开发"
         - time:             "7.2018 - 9.2018"
           location:         "上海"
