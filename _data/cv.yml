@@ -1,10 +1,11 @@
 jdecent:
-    profile: "我从2015年进入浙江工业大学，于2016年转入计算机专业，迈入IT行业。本科期间曾获得省政府奖学金、智能汽车竞赛奖，并以年级第二的名次保送至浙江大学软件学院进行研究生学习。本科至研究生期间的假期参与两个单位的实习工作。同济大学UxLab、上海Chipways半导体。致力于对万物互联、汽车互联等应用场景的开发实现，希望通过自己的产品对物联网连通万物贡献力量。" #写下你想做的方向
+    profile: "  我从2015年进入浙江工业大学，于2016年转入计算机专业，迈入IT行业。本科期间曾获得省政府奖学金、智能汽车竞赛奖，并以年级第二的名次保送至浙江大学软件学院进行研究生阶段学习。
+    本科至研究生期间的假期参与上海Chipways半导体、同济大学用户体验实验室的实习工作，研究生期间于导师实验室 “成功软件” 实习、研究。下一步人生计划是，加入一个潜力巨大的IT企业，为进入新时代的中国、社会付出自己的一份贡献" #写下你想做的方向
     skills:
         - "C#, C++, Java"
         - "Hyperledger Fabric, Spring boot"
-        - "WPF, Unity3D, Eclipse Plugin, JavaFX"
         - "Series Communication(Java & C#)"
+        - "WPF, Unity3D, Eclipse Plugin, JavaFX"
     education:
         - time:             "2019 - 2021"
           location:         "硕士：浙江大学"
@@ -27,25 +28,11 @@ jdecent:
           position:         "软件工程师"
           responsibilities:
             - "负责芯片烧录器上位机开发"
-            - "开发 Chipways XL6600 Integrated Development Enviroment(IDE)"
-            - "开发为公司设计制造的做测试的PC软件"
-
-    projects:
-        - time:             "6 months in 2017"
-          team:             "Team of 4"
-          title:            "智能车"
-          technologies:     "C, 二值化摄像头"
-          responsibilities:
-            - "全国智能车竞赛浙江省三等奖"
-        - time:             "2019-"
-          team:             "Team of 1"
-          title:            "Blog"
-          technologies:     "GitPage, Markdown"
-          responsibilities:
-            - "完成GitPage博客搭建，间断上传一些技术文章"
-        - time:             "2 months in 2018"
-          team:             "Team of 2"
-          title:            "ADAS Simulator"
-          technologies:     "C#, Unity3D"
+            - "负责基于Eclipse Platform框架的 "Chipways XL6600 集成开发环境(IDE)" 开发"
+            - "负责芯片测试上位机PC软件开发"
+        - time:             "7.2018 - 9.2018"
+          location:         "上海"
+          company:          "同济大学-用户体验实验室"
+          position:         "软件工程师"
           responsibilities:
             - "负责智能座舱模拟机开发，完成车道偏移检测、碰撞检测、以及基础驾驶环境搭建等任务。"
