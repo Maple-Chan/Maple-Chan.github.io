@@ -70,7 +70,7 @@ ConcurrentHashMap解决线程安全问题，常用来做本地缓存
 
 数据结构如下：
 
-![java1.7ConcurrencyHashMap](assets/java1.7ConcurrencyHashMap.webp)
+![java1.7ConcurrencyHashMap](https://blog.maplestory.work/images/post_image/java1.7ConcurrencyHashMap.webp)
 
 
 
