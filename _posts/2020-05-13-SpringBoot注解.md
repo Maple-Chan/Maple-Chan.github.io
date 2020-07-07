@@ -18,7 +18,7 @@ tag:
 
 异常分类：
 
-![20171027131229769](https://blog.maplestory.work/images/post_image/Spring 记录.assets/20171027131229769.jpg)
+![20171027131229769](images/post_image/Spring 记录.assets/20171027131229769.jpg)
 
 Exception下分可检查异常（check exceptions）和不可检查异常(unchecked exceptions)。
 
