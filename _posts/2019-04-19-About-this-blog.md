@@ -4,9 +4,9 @@ title:  "About this Blog"
 date:   2019-04-19
 excerpt: "Stick to note down what I'v learnt"
 tag:
-- jekyll 
-- halve
-- blog
+- Jekyll 
+- Halve
+- Blog
 ---
 
 

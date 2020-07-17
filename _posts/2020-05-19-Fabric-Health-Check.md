@@ -5,7 +5,6 @@ date:   2020-05-19
 excerpt: "Stick to note down what I'v learnt"
 tag:
 - Hyperledger Fabric
-- Docker
 ---
 
 <center><H2><b>Experiment on Health check</b></H2></center><br>

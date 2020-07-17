@@ -4,8 +4,7 @@ title:  "Spring Boot 注解"
 date:   2020-05-13
 excerpt: "Stick to note down what I'v learnt"
 tag:
-- java 
-- coding
+- Spring Boot
 ---
 
 <center><H2><b>Spring Boot 注解</b></H2></center><br>

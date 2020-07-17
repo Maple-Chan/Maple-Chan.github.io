@@ -4,8 +4,8 @@ title:  "HashMap与ConcurrentHashMap"
 date:   2020-04-04
 excerpt: "Stick to note down what I'v learnt"
 tag:
-- java 
-- coding
+- Java 
+- Coding
 ---
 
 <center><H2><b>HashMap与ConcurrentHashMap</b></H2></center><br>

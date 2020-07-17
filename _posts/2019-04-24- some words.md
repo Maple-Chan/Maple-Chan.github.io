@@ -4,8 +4,7 @@ title:  "语情集"
 date:   2019-04-24
 excerpt: "Just a place put some feelings"
 tag:
-- poems
-- sentence
+- Poems
 ---
 
 <center><H2><b>语情集</b></H2></center><br>

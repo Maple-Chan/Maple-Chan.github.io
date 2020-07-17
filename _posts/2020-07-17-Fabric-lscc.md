@@ -4,7 +4,6 @@ title:  "Fabric-LSCC生命周期系统合约"
 date:   2020-07-18
 excerpt: "Stick to note down what I'v learnt"
 tag:
-- java 
 - Hyperledger Fabric
 ---
 
@@ -59,7 +58,7 @@ tag:
 
 - 函数名：deploy
 - 通道：mychannel
-- 链码+版本：fabcargo + 1.0
+- 链码+版本+参数：fabcargo + 1.0 + initLedger
 - 背书策略：Org1MSP与Org2MSP
 - Endorsement system chaincode (ESCC) ，需要背书系统链码依赖。参见：[System chaincode概念](https://hyperledger-fabric.readthedocs.io/en/release-1.4/smartcontract/smartcontract.html#system-chaincode)
 - Validation system chaincode (VSCC)，需要验证链码依赖
