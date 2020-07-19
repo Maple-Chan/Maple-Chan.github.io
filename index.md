@@ -12,8 +12,6 @@ Male
 
 Software Engineer
 
-[Posts](/tags)
 
-
-### [CurriculumVitae](/cv)
+### [CurriculumVitae](/cv)  |  [Posts](/tags)
 
