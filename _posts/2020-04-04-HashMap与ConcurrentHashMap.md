@@ -14,9 +14,21 @@ tag:
 
 Map <- AbstractMap <- HashMap
 
-HashMap里有一个数组，计算hashcode，存入对应的数据位置。对于重复的元素采用链地址法，装在同一个数组下标的桶当中。
+基本过程描述：HashMap里有一个数组，计算hashcode，存入对应的数据位置。对于重复的元素采用链地址法，装在同一个数组下标的桶当中。
 
-resize：每次resize都扩容为两倍。申请一个两倍的桶数组，将原先的记录逐个重新映射（重新计算hash）到新的桶里面，然后将原先的桶逐个置为null使得引用失效。 （**HashMap之所以线程不安全，就是resize这里出的问题**。）
+**TreeifyThreshold**为8，当树元素个数>=8的时候，平均查找长度为3。而如果是链表，则平均查找长度为4，这是转换成红黑树才有必要。
+
+**UnTreeifyThreshold**为6，主要是为了减少频繁树化、去树化的过程。
+
+桶数组的个数为啥是**2^n^**，hash通过取模运算定位到桶数组的下标`hash%length`，在计算机中位运算的效率更高。满足2^n^的时候` hash%length== hash & (length-1)` 可以很快的获取到需要存储的位置。同时length-1 == 2^n^-1，length-1的每一位都是1，可以很均匀的将hash分布在桶数组中，减少hash碰撞。
+
+> 1) 用取模算法定位下标，当length == 2^n^ 的时候，可以用`hash & (length-1)`计算，更快。
+>
+> 2) 2^n^ - 1 的每一位都是1，可以是散列更分散。
+
+
+
+resize：每次resize都扩容为两倍。申请一个两倍的桶数组（保证2^n），将原先的记录逐个重新映射（重新计算hash）到新的桶里面，然后将原先的桶逐个置为null使得引用失效。 （**HashMap之所以线程不安全，就是resize这里出的问题**。）
 
 HashMap线程不安全
 
@@ -34,11 +46,23 @@ HashMap线程不安全
 
 > [HashMap默认加载因子为什么选择0.75？](https://blog.csdn.net/weixin_34101784/article/details/86730739)
 >
+> [HashMap默认加载因子为什么选择0.75？(阿里)](<https://blog.csdn.net/diaopai5230/article/details/101211014?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase>)
+>
 > [面试官：来，问你几个关于HashMap的问题？](https://cloud.tencent.com/developer/article/1442912)
 
+**为什么0.75**
+
 ```javascript
-threshold = loadFactor * capacity = 0.75 * 16 = 12 // 默认加载因子和容量
+threshold = loadFactor * capacity = 0.75 * 16 = 12 // 默认加载因子和容量，在达到12容量就会扩容
 ```
+
+HashMap默认加载因子为什么选择0.75，**提高空间利用率和 减少查询成本的折中，考虑到泊松分布，0.75的话碰撞最小**。
+
+加载因子如果为1，则会导致查询成本过高。
+
+加载因子如果为0.5，则会导致空间过于浪费，还没有达到一定利用率就扩容了。
+
+
 
 如果大于阈值就扩容，扩容为两倍。
 
