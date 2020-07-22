@@ -5,7 +5,7 @@ date:   2020-07-21
 excerpt: "Stick to note down what I'v learnt"
 tag:
 - Java
--Coding
+- Coding
 ---
 
 <center><H2><b>LinkedList&ArrayList</b></H2></center><br>
