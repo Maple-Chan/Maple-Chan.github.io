@@ -87,10 +87,9 @@ Spring2.5为我们引入了组件自动扫描机制，他可以在类路径底�
 > 方法不为public也能访问
 
 1. 这个注解会将HTTP请求映射到MVC和REST控制器的处理方法上。（就是配置Web请求映射）
-
 2. 这个注解可以放在类上也可以放在方法上。放在类级别上，会将一个请求或者请求模式映射到一个控制器上。放在方法上，可以进一步制定处理方法的映射关系。
 
-3. @RequestMapping可以处理多个URI，将多个请求映射到一个方法上。
+**@RequestMapping可以处理多个URI，将多个请求映射到一个方法上。**
 
    ```java
    @RestController  
@@ -109,9 +108,170 @@ Spring2.5为我们引入了组件自动扫描机制，他可以在类路径底�
    }  
    ```
 
-   
+**@RequestMapping处理HTTP的各种方法。**
 
-4. @RequestParam注解配合使用，将请求的参数同处理方法的参数绑定在一起。
+```java
+@RestController  
+@RequestMapping("/home")  //所有方法GET/POST/...等方法都会通过/home请求进来。
+public class IndexController {  
+    @RequestMapping(method = RequestMethod.GET)  //处理GET方法
+    String get() {  
+        return "Hello from get";  
+    }  
+    @RequestMapping(method = RequestMethod.DELETE)  
+    String delete() {  
+        return "Hello from delete";  
+    }  
+    @RequestMapping(method = RequestMethod.POST)  
+    String post() {  
+        return "Hello from post";  
+    }  
+    @RequestMapping(method = RequestMethod.PUT)  
+    String put() {  
+        return "Hello from put";  
+    }  
+    @RequestMapping(method = RequestMethod.PATCH)  
+    String patch() {  
+        return "Hello from patch";  
+    }  
+}  
+```
+
+
+
+**用@RequestMapping来处理生产和消费对象**
+
+使用该注解的produces\consumes这两个元素来缩小请求映射类型的范围。为了能用请求的媒体类型来产生/消费对象，可以结合@ResponseBody注解来完成
+
+```java
+@RestController
+@RequestMapping("/home")
+public class IndexController{
+    @RequestMapping(value="/prod",produces ={
+        "application/JSON"
+    })
+    @ResponseBody
+    String getProduces(){
+        return "Produces attribute";
+    }
+    
+    @RequestMapping(value = "/cons", consumes = {  
+        "application/JSON",  
+        "application/XML"  
+    })  
+    @ResponseBody
+    String getConsumes() {  
+        return "Consumes attribute";  
+    }
+}
+//在这段代码中，getProduces()处理方法会产生一个JSON响应，getConsumes()处理方法可以同时处理请求中的JSON和XML内容。
+```
+
+
+
+**使用 @RequestMapping 来处理消息头** 
+
+@RequestMapping注解提供一个header元素来根据请求中的消息头内容缩小请求映射的范围。
+
+```java
+@RestController  
+@RequestMapping("/home")  
+public class IndexController {  
+    @RequestMapping(value = "/head", headers = {  
+        "content-type=text/plain",
+        "content-type=text/html"  
+    })  
+    String post() {  
+        return "Mapping applied along with headers";  
+    }  
+}  
+//上述代码中，映射的范围缩了，post()方法只处理/home/head并且content-typeheader被指定为text/plain和text/html这个两个请求.
+```
+
+
+
+**使用@RequestMapping来处理请求参数,进一步缩小映射范围.**
+
+```java
+@RestController  
+@RequestMapping("/home")  
+public class IndexController {  
+    @RequestMapping(value = "/fetch", params = {  
+        "personId=10"  
+    })  
+    String getParams(@RequestParam("personId") String id) {  
+        return "Fetched parameter using params attribute = " + id + "in function: getParams()";  
+    }  
+    
+    @RequestMapping(value = "/fetch", params = {  
+        "personId=20"  
+    })  
+    String getParamsDifferent(@RequestParam("personId") String id) {  
+        return "Fetched parameter using params attribute = " + id + "in function: getParamsDifferent()";  
+    }  
+}  
+// 上面两个方法,根据personId的不同进入了不同的函数.
+```
+
+
+
+**使用 @RequestMapping 处理动态 URI** 
+
+```java
+@RestController
+@RequestMapping("/home")
+public class IndexController{
+    @RequestMapping(value="/fectc/{id}", method = RequestMethod.GET)
+    String getDynamicUriValue(@PathVariable String id){
+        System.out.println("ID is:"+id);
+        return "Dynamic URI parameter fetched";  
+    }
+    //在这段代码中，方法 getDynamicUriValue() 会在发起到 localhost:8080/home/fetch/10 的请求时执行。这里 getDynamicUriValue() 方法 id 参数也会动态地被填充为 10 这个值。 
+    @RequestMapping(value = "/fetch/{id:[a-z]+}/{name}", method = RequestMethod.GET)  
+    String getDynamicUriValueRegex(@PathVariable("name") String name) {  
+        System.out.println("Name is " + name);  
+        return "Dynamic URI parameter fetched using regex";  
+    }  
+	//方法 getDynamicUriValueRegex() 会在发起到 localhost:8080/home/fetch/chan/maple 的请求时执行。不过，如果发起的请求是 /home/fetch/10/maple 的话，会抛出异常，因为这个URI并不能匹配正则表达式。 
+
+}
+    
+```
+
+**RequestMapping默认的处理方法**
+
+```java
+@RestController  
+@RequestMapping("/home")  
+public class IndexController {  
+    @RequestMapping()  // @RequestMapping("/") 如果写了"/" ，则在访问时必须/home/
+    				 // @RequestMapping()的情况下,可以直接用/home访问到，如果没有写上面的映						射，则在第二种情况使用/home/也能访问到该函数
+    String  
+    defaultMapping () {  //default是java关键字,不能作为方法名.
+        return "This is a default method for the class";  
+    }  
+    //参考 ：这里面用了关键字default
+    //https://blog.csdn.net/originations/article/details/89492884
+}  
+```
+
+**RequestMapping快捷方式**
+
+```java
+   @GetMapping
+   @PostMapping
+   @PutMapping
+   @DeleteMapping
+   @PatchMapping
+   //RequestMapping的基础上进行了封装，
+   //尽管每个变体都可以使用带有方法属性的 @RequestMapping 注解来互换实现, 但组合变体仍然是一种最佳的实践 — 这主要是因为组合注解减少了在应用程序上要配置的元数据，并且代码也更易读。 
+```
+
+
+
+###    @RequestParam
+
+@RequestParam注解配合使用，将请求的参数同处理方法的参数绑定在一起。
 
    ```java
    @RestController  
@@ -133,201 +293,38 @@ Spring2.5为我们引入了组件自动扫描机制，他可以在类路径底�
 
    
 
-5. @RequestParam 注解的 required 这个参数定义了参数值是否是必须要传的。
+@RequestParam 注解的 required 这个参数定义了参数值是否是必须要传的。
 
-   ```java
-   @RestController  
-   @RequestMapping("/home")  
-   public class IndexController {  
-       @RequestMapping(value = "/name")  
-       String getName(@RequestParam(value = "person", required = false) String personName) {  
-           return "Required element of request param";  
-       }  
-   }  
-   // 在这段代码中，因为 required 被指定为 false，所以 getName() 处理方法对于如下两个 URL 都会进行处理： 
-   // /home/name?person=xyz
-   // /home/name
-   ```
+```java
+@RestController  
+@RequestMapping("/home")  
+public class IndexController {  
+    @RequestMapping(value = "/name")  
+    String getName(@RequestParam(value = "person", required = false) String personName) {  
+        return "Required element of request param";  
+    }  
+}  
+// 在这段代码中，因为 required 被指定为 false，所以 getName() 处理方法对于如下两个 URL 都会进行处理： 
+// /home/name?person=xyz
+// /home/name
+```
 
-   
 
-6. @RequestParam注解的defaultValue参数就是用来给取值为空的请求参数提供一个默认值
 
-   ```java
-   @RestController  
-   @RequestMapping("/home")  
-   public class IndexController {  
-       @RequestMapping(value = "/name")  
-       String getName(@RequestParam(value = "person", defaultValue = "John") String personName) {  
-           return "Required element of request param."+"personName:"+personName;  
-       }  
-   }  
-   ```
+@RequestParam注解的defaultValue参数就是用来给取值为空的请求参数提供一个默认值
 
-   
+```java
+@RestController  
+@RequestMapping("/home")  
+public class IndexController {  
+    @RequestMapping(value = "/name")  
+    String getName(@RequestParam(value = "person", defaultValue = "John") String personName) {  
+        return "Required element of request param."+"personName:"+personName;  
+    }  
+}  
+```
 
-7. @RequestMapping处理HTTP的各种方法。
 
-   ```java
-   @RestController  
-   @RequestMapping("/home")  //所有方法GET/POST/...等方法都会通过/home请求进来。
-   public class IndexController {  
-       @RequestMapping(method = RequestMethod.GET)  //处理GET方法
-       String get() {  
-           return "Hello from get";  
-       }  
-       @RequestMapping(method = RequestMethod.DELETE)  
-       String delete() {  
-           return "Hello from delete";  
-       }  
-       @RequestMapping(method = RequestMethod.POST)  
-       String post() {  
-           return "Hello from post";  
-       }  
-       @RequestMapping(method = RequestMethod.PUT)  
-       String put() {  
-           return "Hello from put";  
-       }  
-       @RequestMapping(method = RequestMethod.PATCH)  
-       String patch() {  
-           return "Hello from patch";  
-       }  
-   }  
-   ```
-
-   
-
-8. 用@RequestMapping来处理生产和消费对象
-
-   使用该注解的produces\consumes这两个元素来缩小请求映射类型的范围。为了能用请求的媒体类型来产生/消费对象，可以结合@ResponseBody注解来完成
-
-   ```java
-   @RestController
-   @RequestMapping("/home")
-   public class IndexController{
-       @RequestMapping(value="/prod",produces ={
-           "application/JSON"
-       })
-       @ResponseBody
-       String getProduces(){
-           return "Produces attribute";
-       }
-       
-       @RequestMapping(value = "/cons", consumes = {  
-           "application/JSON",  
-           "application/XML"  
-       })  
-       @ResponseBody
-       String getConsumes() {  
-           return "Consumes attribute";  
-       }
-   }
-   //在这段代码中，getProduces()处理方法会产生一个JSON响应，getConsumes()处理方法可以同时处理请求中的JSON和XML内容。
-   ```
-
-   
-
-9. 使用 @RequestMapping 来处理消息头 
-
-   @RequestMapping注解提供一个header元素来根据请求中的消息头内容缩小请求映射的范围。
-
-   ```java
-   @RestController  
-   @RequestMapping("/home")  
-   public class IndexController {  
-       @RequestMapping(value = "/head", headers = {  
-           "content-type=text/plain",
-           "content-type=text/html"  
-       })  
-       String post() {  
-           return "Mapping applied along with headers";  
-       }  
-   }  
-   //上述代码中，映射的范围缩了，post()方法只处理/home/head并且content-typeheader被指定为text/plain和text/html这个两个请求.
-   ```
-
-   
-
-10. 使用@RequestMapping来处理请求参数,进一步缩小映射范围.
-
-    ```java
-    @RestController  
-    @RequestMapping("/home")  
-    public class IndexController {  
-        @RequestMapping(value = "/fetch", params = {  
-            "personId=10"  
-        })  
-        String getParams(@RequestParam("personId") String id) {  
-            return "Fetched parameter using params attribute = " + id + "in function: getParams()";  
-        }  
-        
-        @RequestMapping(value = "/fetch", params = {  
-            "personId=20"  
-        })  
-        String getParamsDifferent(@RequestParam("personId") String id) {  
-            return "Fetched parameter using params attribute = " + id + "in function: getParamsDifferent()";  
-        }  
-    }  
-    // 上面两个方法,根据personId的不同进入了不同的函数.
-    ```
-
-    
-
-11. 使用 @RequestMapping 处理动态 URI 
-
-    ```java
-    @RestController
-    @RequestMapping("/home")
-    public class IndexController{
-        @RequestMapping(value="/fectc/{id}", method = RequestMethod.GET)
-        String getDynamicUriValue(@PathVariable String id){
-            System.out.println("ID is:"+id);
-            return "Dynamic URI parameter fetched";  
-        }
-        //在这段代码中，方法 getDynamicUriValue() 会在发起到 localhost:8080/home/fetch/10 的请求时执行。这里 getDynamicUriValue() 方法 id 参数也会动态地被填充为 10 这个值。 
-        @RequestMapping(value = "/fetch/{id:[a-z]+}/{name}", method = RequestMethod.GET)  
-        String getDynamicUriValueRegex(@PathVariable("name") String name) {  
-            System.out.println("Name is " + name);  
-            return "Dynamic URI parameter fetched using regex";  
-        }  
-    	//方法 getDynamicUriValueRegex() 会在发起到 localhost:8080/home/fetch/chan/maple 的请求时执行。不过，如果发起的请求是 /home/fetch/10/maple 的话，会抛出异常，因为这个URI并不能匹配正则表达式。 
-    
-    }
-        
-    ```
-
-    
-
-12. RequestMapping默认的处理方法
-
-    ```java
-    @RestController  
-    @RequestMapping("/home")  
-    public class IndexController {  
-        @RequestMapping()  // @RequestMapping("/") 如果写了"/" ，则在访问时必须/home/
-        				 // @RequestMapping()的情况下,可以直接用/home访问到，如果没有写上面的映						射，则在第二种情况使用/home/也能访问到该函数
-        String  
-        defaultMapping () {  //default是java关键字,不能作为方法名.
-            return "This is a default method for the class";  
-        }  
-        //参考 ：这里面用了关键字default
-        //https://blog.csdn.net/originations/article/details/89492884
-    }  
-    ```
-    
-    
-    
-13. RequestMapping快捷方式
-
-    ```java
-       @GetMapping
-       @PostMapping
-       @PutMapping
-       @DeleteMapping
-       @PatchMapping
-       //RequestMapping的基础上进行了封装，
-       //尽管每个变体都可以使用带有方法属性的 @RequestMapping 注解来互换实现, 但组合变体仍然是一种最佳的实践 — 这主要是因为组合注解减少了在应用程序上要配置的元数据，并且代码也更易读。 
-    ```
 
 
 
@@ -340,6 +337,23 @@ Spring2.5为我们引入了组件自动扫描机制，他可以在类路径底�
 @responseBody注解的作用是将controller的方法返回的对象通过适当的转换器转换为指定的格式之后，写入到response对象的body区，通常用来返回JSON数据或者是XML数据。
 
 
+
+### @PathVariable
+
+@PathVariable只支持一个属性value，类型是String，代表绑定的属性名。默认绑定同名参数。用来便捷地提取URL中的动态参数。
+
+```java
+@RequestMapping("/viewUser/{id}/{name}")
+    public Map<String, Object> viewUser(@PathVariable("id") Integer idInt, @PathVariable Integer name) {
+        System.out.println("@PathVariable中 请求参数 id = " + idInt);
+        Map<String, Object> user = new HashMap<>();
+        user.put("id", idInt);
+        user.put("name", name);
+        return user;
+    }
+```
+
+与RequestParam不同，这个将请求的参数与函数的参数绑定在一起。
 
 
 
