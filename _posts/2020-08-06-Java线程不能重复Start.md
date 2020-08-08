@@ -89,3 +89,8 @@ Exception in thread "main" java.lang.IllegalThreadStateException
 
 但是一个线程对象可以调用多次run，因为他只是一个对象调用一个方法。但是run()方法并没有启动一个线程，只是在调用方法的线程中执行任务。事实上，应当调用thread.start()方法，因为这会创建一个执行run方法的新线程。
 
+### 线程状态转换
+
+##### JavaThreadState 和 JVMTIThreadState 转换
+
+![1596883974952](https://blog.maplestory.work/images/post_image/2020-08-06-Java线程不能重复Start.assets/1596883974952.png)
