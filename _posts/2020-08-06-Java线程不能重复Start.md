@@ -37,6 +37,8 @@ tag:
 
   结束状态。
 
+[Java线程的6种状态及切换(透彻讲解)](https://blog.csdn.net/qq_22771739/article/details/82529874)
+
 
 
 > sleep方法，暂停当前线程，把cpu片段让出给其他线程，减缓当前线程的执行。
