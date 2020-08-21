@@ -4,7 +4,7 @@ title:  "MySQL存储byte[]数据"
 date:   2020-08-12
 excerpt: "Stick to note down what I'v learnt"
 tag:
-- SQL
+- 数据库
 ---
 
 <center><H2><b>MySQL存储byte[]数据</b></H2></center><br>
