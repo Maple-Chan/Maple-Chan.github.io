@@ -31,6 +31,18 @@ Java中每个对象都可以作为锁，这是synchronized实现同步的基础�
 > 2. 静态同步方法：锁是当前类，即class对象，进入同步代码前需要获得当前类锁。
 > 3. 同步方法块：所示括号里的对象，对给定对象加锁，进入同步代码块之前要获得该对象的对象锁。
 
+
+
+### synchronized的特质和缺点
+
+<https://www.jianshu.com/p/34fbf751133c>
+
+<https://blog.csdn.net/sailor125/article/details/100140497>
+
+
+
+
+
 ### **实践**
 
 
